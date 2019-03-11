@@ -14,7 +14,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 			allABDPi = unpack(rows, 'ab_diversity_pi'),
 			allHIV_div = unpack(rows, 'hiv_diversity_pi'),
 			listofPatients = [],
-			listofDataViz = ["Antibody Diversity", "HIV Diversity"],
+			listofDataViz = ["Antibody Diversity", "HIV Diversity", "Both"],
 			currentPatient,
 			currentABDPi = [],
 			currentHIVPi = [],
@@ -30,6 +30,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
 		//This function gets the data from the patient chosen on the dropdown
 		function getPatientData(chosenPatient, chosenData) {
+			currentHIVPi = [];
 			currentABDPi = [];
 			currentTimePoint = [];
 			for (var i = 0; i < allPatientIDs.length; i++) {
@@ -40,6 +41,11 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 				else if (allPatientIDs[i] === chosenPatient && chosenData === "HIV Diversity") {
 					currentHIVPi.push(allHIV_div[i]);
 					currentTimePoint.push(allTimePoints[i]);
+				}
+				else if (allPatientIDs[i] === chosenPatient && chosenData === "Both") {
+					currentTimePoint.push(allTimePoints[i]);
+					currentABDPi.push(allABDPi[i]);
+					currentHIVPi.push(allHIV_div[i]);
 				}
 			}
 		};
@@ -77,6 +83,32 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 					}
 				}
 				var data = [trace2];
+			}
+			else if(chosenData === "Both"){
+				var trace1 = {
+					x: currentTimePoint,
+					y: currentABDPi,
+					mode: 'lines+markers',
+					type: 'scatter',
+					connectgaps: true,
+					marker: {
+						size: 12,
+						opacity: 0.5
+					}
+				}
+				var trace2 = {
+					x: currentTimePoint,
+					y: currentHIVPi,
+					mode: 'lines+markers',
+					type: 'scatter',
+					connectgaps: true,
+					marker: {
+						size: 12,
+						opacity: 0.5
+					}
+				}
+				var data = [trace1, trace2]
+
 			}
 		
 
