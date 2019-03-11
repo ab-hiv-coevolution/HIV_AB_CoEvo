@@ -14,8 +14,10 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 			allABDPi = unpack(rows, 'ab_diversity_pi'),
 			allHIV_div = unpack(rows, 'hiv_diversity_pi'),
 			listofPatients = [],
-			listofDataViz = ["Antibody Diversity", "HIV Diversity"],
+			listofDataViz = ["ABDPi", "HIVPi"],
 			currentPatient,
+			clickedItem,
+			currentData = [],
 			currentABDPi = [],
 			currentHIVPi = [],
 			currentTimePoint = [];
@@ -27,33 +29,33 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 			}
 		}
 
-
 		//This function gets the data from the patient chosen on the dropdown
 		function getPatientData(chosenPatient, chosenData) {
+			console.log(chosenData);
+			currentData = [];
 			currentABDPi = [];
+			currentHIVPi = [];
 			currentTimePoint = [];
 			for (var i = 0; i < allPatientIDs.length; i++) {
-				if (allPatientIDs[i] === chosenPatient && chosenData === "Antibody Diversity") {
-					currentABDPi.push(allABDPi[i]);
+
+				if (allPatientIDs[i] === chosenPatient && chosenData === 'ABDPi') {
+					//console.log(currentData);
 					currentTimePoint.push(allTimePoints[i]);
-				}
-				else if (allPatientIDs[i] === chosenPatient && chosenData === "HIV Diversity") {
-					currentHIVPi.push(allHIV_div[i]);
-					currentTimePoint.push(allTimePoints[i]);
-				}
+					currentData.push(allABDPi[i]);
+					}
 			}
 		};
 
 		// Default Patient 1 Data
-		setBubblePlot('1', 'Antibody Diversity');
+		setBubblePlot('1', 'ABDPi');
 
-		//
-		function setBubblePlot(chosenPatient, chosenData) {
+
+		function setBubblePlot(chosenPatient, chosenData) {		
 			getPatientData(chosenPatient, chosenData);
-			if (chosenData === "Antibody Diversity") {
+			
 				var trace1 = {
 					x: currentTimePoint,
-					y: currentABDPi,
+					y: currentData,
 					mode: 'lines+markers',
 					type: 'scatter',
 					connectgaps: true,
@@ -61,30 +63,18 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 						size: 12,
 						opacity: 0.5
 					}
+
 				}
 				var data = [trace1];
-			}
-			else if(chosenData === "HIV Diversity"){
-				var trace2 = {
-					x: currentTimePoint,
-					y: currentHIVPi,
-					mode: 'lines+markers',
-					type: 'scatter',
-					connectgaps: true,
-					marker: {
-						size: 12,
-						opacity: 0.5
-					}
-				}
-				var data = [trace2];
-			}
+
+			
 		
 
 
 			//This function is for the layout of the plot
 			//var data = [trace1];
 			var layout = {
-				title: chosenData + ' of Patient ' + chosenPatient,
+				title: ' Patient ' + chosenPatient,
 				titlefont: {
 					family: 'Poppins, sans-serif',
 				},
@@ -111,7 +101,9 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 		var innerContainer = document.querySelector('[data-num="0"]'),
 			//plotEl = innerContainer.querySelector('.plot'),
 			patientSelector = innerContainer.querySelector('.patientnumber');
-			dataSelector = innerContainer.querySelector('.datatype');
+			dataSelector = document.querySelector('.buttons');
+
+			
 
 		function assignOptions(textArray, selector) {
 			for (var i = 0; i < textArray.length; i++) {
@@ -121,18 +113,30 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 			}
 		}
 
+
 		assignOptions(listofPatients, patientSelector);
-		assignOptions(listofDataViz, dataSelector);
-		
-		console.log(listofPatients);
-		console.log(dataSelector.value);
+
+		/*if (e.target !== e.currentTarget) {
+	        var clickedItem = e.target.id;*/
 
 
+		function updatePatient(e) {
+			console.log(e.target.name);
+			if (e.target.name === 'datatype' && e.target !== e.currentTarget) {
+	        var clickedItem = e.target.id;
+	        //console.log(clickedItem);
+			setBubblePlot(patientSelector.value, clickedItem);
 
-		function updatePatient() {
-			setBubblePlot(patientSelector.value, dataSelector.value);
+		} else {
+			setBubblePlot(patientSelector.value, currentData);
 		}
+	};
+
+
 
 		patientSelector.addEventListener('change', updatePatient, false);
-		dataSelector.addEventListener('change', updatePatient, false);
+		//dataSelector.addEventListener('click', doSomething, false);
+		dataSelector.addEventListener('click', updatePatient, false);
+			
+		
 	});
