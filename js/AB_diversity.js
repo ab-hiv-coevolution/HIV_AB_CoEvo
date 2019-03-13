@@ -17,6 +17,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 			listofDataViz = ["ABDPi", "HIVPi"],
 			currentPatient,
 			clickedItem,
+			holdDat,
 			currentData = [],
 			currentABDPi = [],
 			currentHIVPi = [],
@@ -31,8 +32,11 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
 		//This function gets the data from the patient chosen on the dropdown
 		function getPatientData(chosenPatient, chosenData) {
-			console.log(chosenData);
+			console.log("check1:" + chosenData);
+			console.log("check2:" + chosenPatient);
 			currentData = [];
+			holdDat = chosenData;
+			console.log("check3:" + currentData);
 			currentABDPi = [];
 			currentHIVPi = [];
 			currentTimePoint = [];
@@ -43,6 +47,10 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 					currentTimePoint.push(allTimePoints[i]);
 					currentData.push(allABDPi[i]);
 					}
+				else if (allPatientIDs[i] === chosenPatient && chosenData === 'HIVPi'){
+					currentTimePoint.push(allTimePoints[i]);
+					currentData.push(allHIV_div[i]);
+				}
 			}
 		};
 
@@ -121,16 +129,19 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
 
 		function updatePatient(e) {
-			console.log(e.target.name);
-			if (e.target.name === 'datatype' && e.target !== e.currentTarget) {
-	        var clickedItem = e.target.id;
-	        //console.log(clickedItem);
-			setBubblePlot(patientSelector.value, clickedItem);
-
-		} else {
-			setBubblePlot(patientSelector.value, currentData);
-		}
-	};
+			console.log(e.target.id);
+			
+			if (e.target.name === 'datatype' && e.target !== e.currentTarget) 
+			{
+	        	var clickedItem = e.target.id;
+	        	setBubblePlot(patientSelector.value, clickedItem);}
+			
+			else  
+			{
+			
+				setBubblePlot(patientSelector.value, holdDat);
+			}
+		};
 
 
 
