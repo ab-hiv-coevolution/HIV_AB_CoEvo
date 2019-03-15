@@ -206,6 +206,13 @@ a.article, a.article:hover {
     padding: 5px;
 }
 
+
+
+.dropdown-plot{
+    display: inline-block;
+    padding: 10px;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

@@ -131,18 +131,24 @@
                 <div class="spacer --small"></div>
                 <div id="bubbleplots">
                     <div class="bubbleplot" data-num="0">
+                        <div class="drops">
                         <div class="dropdown-plot">
-                            Patient: <select class="patientnumber">
+                            Patient: <select id="patientnumber" class="patientnumber">
+                            </select><br><br>
+                        </div><div class="dropdown-plot">
+                             Diversity: <select id="diversity" class="diversity">
+                            </select><br><br>
+                        </div><div class="dropdown-plot">
+                             Divergence: <select id="divergence" class="divergence">
+                            </select><br><br>
+                        </div><div class="dropdown-plot">
+                             Selection: <select id="selection" class="selection">
                             </select>
                             <br><br>
                         </div>
-                        <div class="dropdown-plot">
-                             <select class="datatype">
-                            </select>
-                            <br><br>
                         </div>
+                        
                         <div class="plot" id="plotdiv"></div>
-
                     </div>
                 </div>
             </div>
