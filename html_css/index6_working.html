@@ -153,7 +153,7 @@
                                     <div class="dropdown-plot">
                                         Patient: <select class="patientdata"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv"></div>
+                                    <div class="plotdiv" id="plotdiv"></div>
                                 </div>
                             </div>
                         </div>
@@ -165,14 +165,34 @@
                         <p>Antibody Repertoire Diversity – Same as HIV Diversity. Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences
                             in a sample
                         </p>
-
+                        <div class="showcase__section" id="bubble">
+                            <div class="spacer --small"></div>
+                            <div id="bubbleplots">
+                                <div class="bubbleplot" data-num="0">
+                                    <div class="dropdown-plot">
+                                        Patient: <select class="patientdata"></select>
+                                    </div>
+                                    <div class="plotdiv" id="AB_diversity"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="Both_Diversity" class="tabcontent">
                         <br>
                         <h3>HIV + Antibody Diversity</h3>
                         <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample</p>
-
+                        <div class="showcase__section" id="bubble">
+                            <div class="spacer --small"></div>
+                            <div id="bubbleplots">
+                                <div class="bubbleplot" data-num="0">
+                                    <div class="dropdown-plot">
+                                        Patient: <select class="patientdata"></select>
+                                    </div>
+                                    <div class="plotdiv" id="both_diversity"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -195,7 +215,7 @@
                                     <div class="dropdown-plot">
                                         Patient: <select class="patientdata"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_4"></div>
+                                    <div class="plotdiv" id="hiv_non_syn"></div>
                                 </div>
                             </div>
                         </div>
@@ -213,7 +233,7 @@
                                     <div class="dropdown-plot">
                                         Patient: <select class="patientdata"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_5"></div>
+                                    <div class="plotdiv" id="hiv_syn"></div>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +251,7 @@
                                     <div class="dropdown-plot">
                                         Patient: <select class="patientdata"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_6"></div>
+                                    <div class="plotdiv" id="ab_divergence"></div>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +278,7 @@
                                     <div class="dropdown-plot">
                                         Patient: <select class="patientdata"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_7"></div>
+                                    <div class="plotdiv" id="hiv_selection"></div>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +297,7 @@
                                     <div class="dropdown-plot ">
                                         Patient: <select class="patientdata "></select>
                                     </div>
-                                    <div class="plot " id="plotdiv_8"></div>
+                                    <div class="plotdiv" id="ab_selection"></div>
                                 </div>
                             </div>
                         </div>
@@ -295,7 +315,7 @@
                                     <div class="dropdown-plot ">
                                         Patient: <select class="patientdata "></select>
                                     </div>
-                                    <div class="plot " id="plotdiv_9"></div>
+                                    <div class="plotdiv " id="plotdiv_9"></div>
                                 </div>
                             </div>
                         </div>
@@ -336,6 +356,7 @@
                     }
                     document.getElementById(statName).style.display = "block ";
                     evt.currentTarget.className += " active ";
+                    console.log(evt.target)
                 }
             </script>
 
