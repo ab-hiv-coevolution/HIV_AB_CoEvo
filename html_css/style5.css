@@ -361,3 +361,25 @@ h2 {
     border: 1px solid #ccc;
     border-top: none;
 }
+
+
+/* ---------------------------------------------------
+    Data Table
+----------------------------------------------------- */
+
+table {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65em;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

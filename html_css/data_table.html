@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- OP EDIT -->
+    <title>HIV/Ab</title>
+    <link rel="icon" type="image/png" href="../logos/favicon.png" sizes="32x32">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style5.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="data_viz_plotly.html">
+                    <div class="small-logo">
+                        <img src="../logos/favicon.png">
+                    </div>
+                </a>
+                <h4>HIV/Ab EVO</h4>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="index5.html">Home</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">About</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="about.html">Overview</a>
+                        </li>
+                        <li>
+                            <a href="#">Methods</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ab
+						Diversity</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Patient Data</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://github.com/efryer333/HIV_AB_CoEvo" class="download">Github</a>
+                </li>
+                <li>
+                    <a href="#" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fas fa-align-justify"></i>
+					</button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="people.html">People</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Publications">Publications</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <h2>Data</h2>
+
+            <hr>
+            <div id="table" style="overflow-y: scroll; height:500px; width:750px; ">
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th title="Field #1">Patient id</th>
+                            <th title="Field #2">Time point (years)</th>
+                            <th title="Field #3">CD4 count</th>
+                            <th title="Field #4">Viral load</th>
+                            <th title="Field #5">HIV diversity (pi)</th>
+                            <th title="Field #6">AB diversity (pi)</th>
+                            <th title="Field #7">AB divergence</th>
+                            <th title="Field #8">HIV synonymous divergence</th>
+                            <th title="Field #9">HIV non-synonymous divergence</th>
+                            <th title="Field #10">HIV selection (dN/dS)</th>
+                            <th title="Field #11">AbR_baseline_mean_sigma_CDR</th>
+                            <th title="Field #12">abr_baseline_mean_sigma_FWR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">3.134246575</td>
+                            <td>650</td>
+                            <td>10921</td>
+                            <td>0.962883074</td>
+                            <td>31.42784051</td>
+                            <td>0.025343316</td>
+                            <td>0.003431918</td>
+                            <td>0.009771407</td>
+                            <td>0.897678174</td>
+                            <td>-0.267096465</td>
+                            <td>-0.626047382</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">3.597260274</td>
+                            <td>638</td>
+                            <td>10953</td>
+                            <td>0.923537102</td>
+                            <td>30.58687734</td>
+                            <td>0.017401099</td>
+                            <td>0.004464967</td>
+                            <td>0.010485998</td>
+                            <td>0.665737803</td>
+                            <td>-0.424897436</td>
+                            <td>-0.634765338</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">4.038356164</td>
+                            <td>588</td>
+                            <td>6776</td>
+                            <td>1.030236894</td>
+                            <td>33.34546146</td>
+                            <td>0.033766187</td>
+                            <td>0.010967445</td>
+                            <td>0.008186044</td>
+                            <td>0.587132954</td>
+                            <td>0.067016208</td>
+                            <td>-0.647559682</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">4.509589041</td>
+                            <td>594</td>
+                            <td>8282</td>
+                            <td>1.664950215</td>
+                            <td>30.62854942</td>
+                            <td>0.03072828</td>
+                            <td>0.02144313</td>
+                            <td>0.013908429</td>
+                            <td>0.668481704</td>
+                            <td>-0.051294197</td>
+                            <td>-0.497362125</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">4.939726027</td>
+                            <td>504</td>
+                            <td>8180</td>
+                            <td>2.359579284</td>
+                            <td>31.45303203</td>
+                            <td>0.022937954</td>
+                            <td>0.013804519</td>
+                            <td>0.021766889</td>
+                            <td>1.329512927</td>
+                            <td>-0.259059035</td>
+                            <td>-0.670731385</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">5.37260274</td>
+                            <td>480</td>
+                            <td>11219</td>
+                            <td>1.013113077</td>
+                            <td>33.06618029</td>
+                            <td>0.041278368</td>
+                            <td>0.02753884</td>
+                            <td>0.022165023</td>
+                            <td>0.892786492</td>
+                            <td>0.109878325</td>
+                            <td>-0.781401594</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">6.339726027</td>
+                            <td>527</td>
+                            <td>10369</td>
+                            <td>3.336719573</td>
+                            <td>33.06845236</td>
+                            <td>0.03916407</td>
+                            <td>0.032236368</td>
+                            <td>0.034268363</td>
+                            <td>1.241403925</td>
+                            <td>-0.005876142</td>
+                            <td>-0.580941297</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">6.761643836</td>
+                            <td>530</td>
+                            <td>12393</td>
+                            <td>2.386692622</td>
+                            <td>32.49247074</td>
+                            <td>0.032470667</td>
+                            <td>0.029811622</td>
+                            <td>0.050361987</td>
+                            <td>1.788219409</td>
+                            <td>-0.035170866</td>
+                            <td>-0.586913318</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">7.775342466</td>
+                            <td>553</td>
+                            <td>3748</td>
+                            <td>1.420556338</td>
+                            <td>30.9622112</td>
+                            <td>0.025423737</td>
+                            <td>0.029438954</td>
+                            <td>0.043389359</td>
+                            <td>1.537030342</td>
+                            <td>-0.296303235</td>
+                            <td>-0.509235234</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">8.78630137</td>
+                            <td>462</td>
+                            <td>3985</td>
+                            <td>2.312157877</td>
+                            <td>30.19324967</td>
+                            <td>0.028966396</td>
+                            <td>0.043628562</td>
+                            <td>0.050026131</td>
+                            <td>1.312444272</td>
+                            <td>-0.005679978</td>
+                            <td>-0.510372316</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">9.043835616</td>
+                            <td>462</td>
+                            <td>2513</td>
+                            <td>4.980656284</td>
+                            <td>32.89510597</td>
+                            <td>0.024732189</td>
+                            <td>0.057028981</td>
+                            <td>0.042658621</td>
+                            <td>1.05908435</td>
+                            <td>-0.235467482</td>
+                            <td>-0.683055702</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">9.632876712</td>
+                            <td>400</td>
+                            <td>9174</td>
+                            <td>3.908967923</td>
+                            <td>31.71970856</td>
+                            <td>0.028645347</td>
+                            <td>0.063160135</td>
+                            <td>0.050499447</td>
+                            <td>0.853462554</td>
+                            <td>-0.207488574</td>
+                            <td>-0.717251318</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">10.05205479</td>
+                            <td>422</td>
+                            <td>7655</td>
+                            <td>4.109722179</td>
+                            <td>32.99668486</td>
+                            <td>0.046175176</td>
+                            <td>0.070027695</td>
+                            <td>0.061830139</td>
+                            <td>0.943240244</td>
+                            <td>-0.065406573</td>
+                            <td>-0.775309244</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">10.49315068</td>
+                            <td>469</td>
+                            <td>6998</td>
+                            <td>6.243090511</td>
+                            <td>33.1681666</td>
+                            <td>0.034083624</td>
+                            <td>0.077590675</td>
+                            <td>0.069690991</td>
+                            <td>0.996994107</td>
+                            <td>-0.078837026</td>
+                            <td>-0.541306118</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">11</td>
+                            <td>407</td>
+                            <td>6351</td>
+                            <td>5.241385215</td>
+                            <td>31.31501605</td>
+                            <td>0.034829487</td>
+                            <td>0.04563295</td>
+                            <td>0.049390097</td>
+                            <td>1.651579772</td>
+                            <td>-0.034298244</td>
+                            <td>-0.573489768</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">11.46027397</td>
+                            <td>354</td>
+                            <td>8034</td>
+                            <td>5.106067329</td>
+                            <td>32.40244583</td>
+                            <td>0.035162056</td>
+                            <td>0.073951615</td>
+                            <td>0.076666888</td>
+                            <td>1.104567981</td>
+                            <td>-0.13853098</td>
+                            <td>-0.55418999</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">11.88219178</td>
+                            <td>463</td>
+                            <td>8576</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">12.32328767</td>
+                            <td>NA</td>
+                            <td>6074</td>
+                            <td>2.429638373</td>
+                            <td>31.38306512</td>
+                            <td>0.024938877</td>
+                            <td>0.08366321</td>
+                            <td>0.080737896</td>
+                            <td>0.986944971</td>
+                            <td>-0.222589876</td>
+                            <td>-0.624221247</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">12.76712329</td>
+                            <td>377</td>
+                            <td>10732</td>
+                            <td>1.717734914</td>
+                            <td>32.15417293</td>
+                            <td>0.024681057</td>
+                            <td>0.116208691</td>
+                            <td>0.0929822</td>
+                            <td>0.804067117</td>
+                            <td>-0.131803255</td>
+                            <td>-0.659684416</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">13.43287671</td>
+                            <td>361</td>
+                            <td>5551</td>
+                            <td>4.302853265</td>
+                            <td>31.9195419</td>
+                            <td>0.032727179</td>
+                            <td>0.050587386</td>
+                            <td>0.077495352</td>
+                            <td>1.649461183</td>
+                            <td>-0.02063332</td>
+                            <td>-0.600621653</td>
+                        </tr>
+                        <tr>
+                            <td align="right">1</td>
+                            <td align="right">14.36986301</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>33.55786864</td>
+                            <td>0.043449362</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>0.05229394</td>
+                            <td>-0.606128091</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">2.745205479</td>
+                            <td>520</td>
+                            <td>8828</td>
+                            <td>1.316956761</td>
+                            <td>30.63020186</td>
+                            <td>0.05074184</td>
+                            <td>0.029787229</td>
+                            <td>0.008508336</td>
+                            <td>0.285900939</td>
+                            <td>-0.003463204</td>
+                            <td>-0.77783611</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">3.145205479</td>
+                            <td>391</td>
+                            <td>9934</td>
+                            <td>1.148209349</td>
+                            <td>33.00126006</td>
+                            <td>0.026016124</td>
+                            <td>0.028081865</td>
+                            <td>0.021967405</td>
+                            <td>0.852368239</td>
+                            <td>-0.091579265</td>
+                            <td>-0.685207046</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">4.024657534</td>
+                            <td>567</td>
+                            <td>11900</td>
+                            <td>1.787466782</td>
+                            <td>33.39781293</td>
+                            <td>0.033760821</td>
+                            <td>0.018193731</td>
+                            <td>0.03095216</td>
+                            <td>1.700962169</td>
+                            <td>0.1012852</td>
+                            <td>-0.626537558</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">4.509589041</td>
+                            <td>368</td>
+                            <td>7026</td>
+                            <td>1.790802817</td>
+                            <td>32.22950985</td>
+                            <td>0.024295536</td>
+                            <td>0.030678953</td>
+                            <td>0.041818922</td>
+                            <td>1.415825804</td>
+                            <td>0.053358696</td>
+                            <td>-0.641258488</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">5.005479452</td>
+                            <td>351</td>
+                            <td>3565</td>
+                            <td>2.06066574</td>
+                            <td>32.16383597</td>
+                            <td>0.019586797</td>
+                            <td>0.033814167</td>
+                            <td>0.068577922</td>
+                            <td>2.242408836</td>
+                            <td>-0.186683821</td>
+                            <td>-0.717242142</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">5.449315068</td>
+                            <td>317</td>
+                            <td>6220</td>
+                            <td>3.928410266</td>
+                            <td>33.22997869</td>
+                            <td>0.027391557</td>
+                            <td>0.047406467</td>
+                            <td>0.061760019</td>
+                            <td>1.369855977</td>
+                            <td>0.073454088</td>
+                            <td>-0.635910267</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">5.945205479</td>
+                            <td>350</td>
+                            <td>12279</td>
+                            <td>3.785100571</td>
+                            <td>33.31775315</td>
+                            <td>0.033616307</td>
+                            <td>0.047198098</td>
+                            <td>0.069764406</td>
+                            <td>1.566392472</td>
+                            <td>0.131170993</td>
+                            <td>-0.616544825</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">6.964383562</td>
+                            <td>336</td>
+                            <td>15292</td>
+                            <td>2.753306128</td>
+                            <td>33.09033122</td>
+                            <td>0.026094255</td>
+                            <td>0.049463788</td>
+                            <td>0.081525156</td>
+                            <td>1.76573255</td>
+                            <td>-0.007704933</td>
+                            <td>-0.749593583</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">7.397260274</td>
+                            <td>360</td>
+                            <td>6322</td>
+                            <td>2.350467311</td>
+                            <td>32.56348663</td>
+                            <td>0.023278955</td>
+                            <td>0.054751754</td>
+                            <td>0.089084306</td>
+                            <td>1.822180658</td>
+                            <td>-0.055608864</td>
+                            <td>-0.798462486</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">7.750684932</td>
+                            <td>340</td>
+                            <td>5625</td>
+                            <td>1.121208048</td>
+                            <td>31.25649906</td>
+                            <td>0.016967131</td>
+                            <td>0.050760733</td>
+                            <td>0.094362017</td>
+                            <td>2.026559287</td>
+                            <td>-0.123303977</td>
+                            <td>-0.689944554</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">8.210958904</td>
+                            <td>176</td>
+                            <td>4734</td>
+                            <td>2.205531425</td>
+                            <td>31.74555522</td>
+                            <td>0.02578669</td>
+                            <td>0.054486073</td>
+                            <td>0.100099013</td>
+                            <td>1.974405769</td>
+                            <td>0.1269517</td>
+                            <td>-0.600845896</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">8.682191781</td>
+                            <td>237</td>
+                            <td>9101</td>
+                            <td>0.148174358</td>
+                            <td>31.37915793</td>
+                            <td>0.020522666</td>
+                            <td>0.053611645</td>
+                            <td>0.106013731</td>
+                            <td>2.060367691</td>
+                            <td>-0.080693979</td>
+                            <td>-0.676488696</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">9.301369863</td>
+                            <td>189</td>
+                            <td>11593</td>
+                            <td>1.584406456</td>
+                            <td>32.86482228</td>
+                            <td>0.035537331</td>
+                            <td>0.067149577</td>
+                            <td>0.105428996</td>
+                            <td>1.675328744</td>
+                            <td>0.176757798</td>
+                            <td>-0.591647614</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">10.50410959</td>
+                            <td>176</td>
+                            <td>39454</td>
+                            <td>1.363059734</td>
+                            <td>32.67917686</td>
+                            <td>0.038789594</td>
+                            <td>0.083094849</td>
+                            <td>0.109266258</td>
+                            <td>1.367922853</td>
+                            <td>0.09302012</td>
+                            <td>-0.668206682</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">10.96438356</td>
+                            <td>139</td>
+                            <td>29596</td>
+                            <td>3.054054317</td>
+                            <td>32.48181141</td>
+                            <td>0.025192463</td>
+                            <td>0.081434576</td>
+                            <td>0.108395173</td>
+                            <td>1.42436792</td>
+                            <td>0.056207524</td>
+                            <td>-0.705078075</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">11.43287671</td>
+                            <td>110</td>
+                            <td>103761</td>
+                            <td>3.410130119</td>
+                            <td>31.48490636</td>
+                            <td>0.029114285</td>
+                            <td>0.088192815</td>
+                            <td>0.111931043</td>
+                            <td>1.381522668</td>
+                            <td>0.118806226</td>
+                            <td>-0.408076769</td>
+                        </tr>
+                        <tr>
+                            <td align="right">2</td>
+                            <td align="right">12.75616438</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>31.27132389</td>
+                            <td>0.024495479</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>0.022679057</td>
+                            <td>-0.892745548</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">0.265753425</td>
+                            <td>468</td>
+                            <td>2221</td>
+                            <td>0.047449332</td>
+                            <td>29.47460691</td>
+                            <td>0.014242464</td>
+                            <td>0.000282585</td>
+                            <td>0.000207769</td>
+                            <td>0</td>
+                            <td>-0.357771594</td>
+                            <td>-0.624391373</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">0.734246575</td>
+                            <td>448</td>
+                            <td>3231</td>
+                            <td>0.042142137</td>
+                            <td>29.36624759</td>
+                            <td>0.012599267</td>
+                            <td>0.013644318</td>
+                            <td>0.000204011</td>
+                            <td>0.015066734</td>
+                            <td>-0.432444182</td>
+                            <td>-0.751816309</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">1.194520548</td>
+                            <td>NA</td>
+                            <td>1613</td>
+                            <td>0.061852863</td>
+                            <td>28.63114301</td>
+                            <td>0.008329784</td>
+                            <td>0.013842149</td>
+                            <td>0.004012099</td>
+                            <td>0.292305783</td>
+                            <td>-0.662083794</td>
+                            <td>-0.694745704</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">2.032876712</td>
+                            <td>624</td>
+                            <td>2109</td>
+                            <td>0.743863572</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>0.026394386</td>
+                            <td>0.001857208</td>
+                            <td>0.061252022</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">2.589041096</td>
+                            <td>476</td>
+                            <td>6664</td>
+                            <td>1.129648696</td>
+                            <td>30.04415296</td>
+                            <td>0.012903019</td>
+                            <td>0.021229446</td>
+                            <td>0.008442182</td>
+                            <td>0.404289707</td>
+                            <td>-0.494846196</td>
+                            <td>-0.875943618</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">3.471232877</td>
+                            <td>409</td>
+                            <td>6549</td>
+                            <td>1.150376726</td>
+                            <td>29.13738406</td>
+                            <td>0.011304102</td>
+                            <td>0.040226297</td>
+                            <td>0.008682105</td>
+                            <td>0.261668371</td>
+                            <td>-0.549365975</td>
+                            <td>-0.616802045</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">3.947945205</td>
+                            <td>403</td>
+                            <td>3667</td>
+                            <td>0.674232164</td>
+                            <td>28.82893615</td>
+                            <td>0.011571662</td>
+                            <td>0.030484467</td>
+                            <td>0.008995857</td>
+                            <td>0.328854139</td>
+                            <td>-0.462970982</td>
+                            <td>-0.777494664</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">4.868493151</td>
+                            <td>363</td>
+                            <td>4932</td>
+                            <td>1.811972999</td>
+                            <td>28.55817962</td>
+                            <td>0.012411633</td>
+                            <td>0.035614685</td>
+                            <td>0.016886386</td>
+                            <td>0.550634013</td>
+                            <td>-0.585655447</td>
+                            <td>-0.612835723</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">5.731506849</td>
+                            <td>384</td>
+                            <td>7303</td>
+                            <td>1.27073511</td>
+                            <td>29.05499991</td>
+                            <td>0.018074113</td>
+                            <td>0.020002489</td>
+                            <td>0.022864405</td>
+                            <td>1.293578705</td>
+                            <td>-0.315942979</td>
+                            <td>-0.799855179</td>
+                        </tr>
+                        <tr>
+                            <td align="right">3</td>
+                            <td align="right">7.189041096</td>
+                            <td>299</td>
+                            <td>2585</td>
+                            <td>2.366997304</td>
+                            <td>30.61573159</td>
+                            <td>0.016332178</td>
+                            <td>0.027196213</td>
+                            <td>0.040154759</td>
+                            <td>1.892235443</td>
+                            <td>-0.494823232</td>
+                            <td>-0.816107691</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">0.197260274</td>
+                            <td>950</td>
+                            <td>1723</td>
+                            <td>NA</td>
+                            <td>33.60841293</td>
+                            <td>0.04552731</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.03646416</td>
+                            <td>-0.456966967</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">0.479452055</td>
+                            <td>1116</td>
+                            <td>1984</td>
+                            <td>0.058345895</td>
+                            <td>31.36586155</td>
+                            <td>0.026122568</td>
+                            <td>0.000390052</td>
+                            <td>0.000269228</td>
+                            <td>0.008019673</td>
+                            <td>-0.194815728</td>
+                            <td>-0.58890989</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">1.169863014</td>
+                            <td>828</td>
+                            <td>4813</td>
+                            <td>0.305460468</td>
+                            <td>31.80475096</td>
+                            <td>0.030721244</td>
+                            <td>0.026640714</td>
+                            <td>0.01625455</td>
+                            <td>0.608655559</td>
+                            <td>-0.062243265</td>
+                            <td>-0.610559828</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">2.093150685</td>
+                            <td>713</td>
+                            <td>20446</td>
+                            <td>1.169835931</td>
+                            <td>32.06802556</td>
+                            <td>0.026445265</td>
+                            <td>0.037462615</td>
+                            <td>0.015289173</td>
+                            <td>0.428712666</td>
+                            <td>0.064507736</td>
+                            <td>-0.486473972</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">2.495890411</td>
+                            <td>707</td>
+                            <td>2813</td>
+                            <td>1.030319695</td>
+                            <td>32.3559103</td>
+                            <td>0.035076064</td>
+                            <td>0.048370938</td>
+                            <td>0.023252046</td>
+                            <td>0.497725135</td>
+                            <td>-0.011722417</td>
+                            <td>-0.496007499</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">3.468493151</td>
+                            <td>578</td>
+                            <td>7710</td>
+                            <td>1.440200983</td>
+                            <td>32.16179555</td>
+                            <td>0.031314085</td>
+                            <td>0.041660105</td>
+                            <td>0.034853006</td>
+                            <td>0.892496439</td>
+                            <td>-0.020633173</td>
+                            <td>-0.538196995</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">4.424657534</td>
+                            <td>692</td>
+                            <td>6278</td>
+                            <td>2.153188247</td>
+                            <td>31.22325927</td>
+                            <td>0.017334451</td>
+                            <td>0.059304571</td>
+                            <td>0.042936624</td>
+                            <td>0.760283138</td>
+                            <td>-0.257733638</td>
+                            <td>-0.619946775</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">4.868493151</td>
+                            <td>467</td>
+                            <td>2944</td>
+                            <td>2.356668756</td>
+                            <td>33.01436461</td>
+                            <td>0.038746636</td>
+                            <td>0.077734484</td>
+                            <td>0.051085287</td>
+                            <td>0.66978532</td>
+                            <td>0.080584945</td>
+                            <td>-0.477979153</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">5.353424658</td>
+                            <td>525</td>
+                            <td>1849</td>
+                            <td>0.064181983</td>
+                            <td>31.83308039</td>
+                            <td>0.03937085</td>
+                            <td>0.105722779</td>
+                            <td>0.060380244</td>
+                            <td>0.552741169</td>
+                            <td>-0.015193539</td>
+                            <td>-0.638685016</td>
+                        </tr>
+                        <tr>
+                            <td align="right">4</td>
+                            <td align="right">6.232876712</td>
+                            <td>446</td>
+                            <td>4507</td>
+                            <td>0.06106054</td>
+                            <td>32.44487091</td>
+                            <td>0.029330093</td>
+                            <td>0.079297017</td>
+                            <td>0.064148582</td>
+                            <td>0.80084683</td>
+                            <td>-0.008676885</td>
+                            <td>-0.530346169</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">0.523287671</td>
+                            <td>515</td>
+                            <td>1324</td>
+                            <td>0.065729784</td>
+                            <td>30.70108964</td>
+                            <td>0.015470772</td>
+                            <td>0.000358183</td>
+                            <td>0.000294974</td>
+                            <td>0.002322547</td>
+                            <td>-0.185848929</td>
+                            <td>-0.613419058</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">0.6</td>
+                            <td>601</td>
+                            <td>1896</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">0.753424658</td>
+                            <td>575</td>
+                            <td>928</td>
+                            <td>0.075744809</td>
+                            <td>31.10135351</td>
+                            <td>0.017834998</td>
+                            <td>0.013439205</td>
+                            <td>0.004110904</td>
+                            <td>0.309529436</td>
+                            <td>-0.227352118</td>
+                            <td>-0.649760713</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">0.835616438</td>
+                            <td>543</td>
+                            <td>683</td>
+                            <td>NA</td>
+                            <td>31.8797135</td>
+                            <td>0.022026407</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.11824099</td>
+                            <td>-0.685754995</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">0.989041096</td>
+                            <td>653</td>
+                            <td>6803</td>
+                            <td>0.06897661</td>
+                            <td>33.27452404</td>
+                            <td>0.042345092</td>
+                            <td>0.00037037</td>
+                            <td>0.004083942</td>
+                            <td>0.291849159</td>
+                            <td>0.07854869</td>
+                            <td>-0.646449849</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">1.42739726</td>
+                            <td>582</td>
+                            <td>1229</td>
+                            <td>0.070900994</td>
+                            <td>31.31447234</td>
+                            <td>0.019419985</td>
+                            <td>0.000410947</td>
+                            <td>0.007870202</td>
+                            <td>0.58211336</td>
+                            <td>-0.317151925</td>
+                            <td>-0.704406397</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">1.906849315</td>
+                            <td>308</td>
+                            <td>8022</td>
+                            <td>0.83638132</td>
+                            <td>32.05157353</td>
+                            <td>0.023276904</td>
+                            <td>0.007828745</td>
+                            <td>0.00736192</td>
+                            <td>0.483504149</td>
+                            <td>-0.165227933</td>
+                            <td>-0.654871779</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">2.364383562</td>
+                            <td>344</td>
+                            <td>6489</td>
+                            <td>0.987551553</td>
+                            <td>32.26519443</td>
+                            <td>0.037087242</td>
+                            <td>0.005362904</td>
+                            <td>0.012647952</td>
+                            <td>0.847809328</td>
+                            <td>0.284827546</td>
+                            <td>-0.544443304</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">2.879452055</td>
+                            <td>291</td>
+                            <td>2852</td>
+                            <td>0.423617759</td>
+                            <td>31.84254336</td>
+                            <td>0.020639913</td>
+                            <td>0.001883393</td>
+                            <td>0.015734042</td>
+                            <td>1.239533864</td>
+                            <td>-0.204547953</td>
+                            <td>-0.709016857</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">3.301369863</td>
+                            <td>180</td>
+                            <td>3275</td>
+                            <td>1.50909894</td>
+                            <td>30.72423722</td>
+                            <td>0.020621756</td>
+                            <td>0.013333366</td>
+                            <td>0.022116435</td>
+                            <td>1.567827586</td>
+                            <td>-0.25660189</td>
+                            <td>-0.670602254</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">3.62739726</td>
+                            <td>224</td>
+                            <td>809</td>
+                            <td>0.813276562</td>
+                            <td>30.61352263</td>
+                            <td>0.01548543</td>
+                            <td>0.009316212</td>
+                            <td>0.026738083</td>
+                            <td>1.887868542</td>
+                            <td>-0.463834858</td>
+                            <td>-0.612809437</td>
+                        </tr>
+                        <tr>
+                            <td align="right">5</td>
+                            <td align="right">4.608219178</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>30.84334399</td>
+                            <td>0.018411575</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.283366156</td>
+                            <td>-0.593886894</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">0.526027397</td>
+                            <td>315</td>
+                            <td>24721</td>
+                            <td>0.511707487</td>
+                            <td>31.38320433</td>
+                            <td>0.018446474</td>
+                            <td>0.002336586</td>
+                            <td>0.003332664</td>
+                            <td>0.159777215</td>
+                            <td>-0.023768399</td>
+                            <td>-0.544540502</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">1.189041096</td>
+                            <td>364</td>
+                            <td>67552</td>
+                            <td>4.928474788</td>
+                            <td>31.55282593</td>
+                            <td>0.025527465</td>
+                            <td>0.008079277</td>
+                            <td>0.00778936</td>
+                            <td>0.657991561</td>
+                            <td>-0.024610666</td>
+                            <td>-0.658401121</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">2.117808219</td>
+                            <td>374</td>
+                            <td>37108</td>
+                            <td>1.119284472</td>
+                            <td>31.49707466</td>
+                            <td>0.019014375</td>
+                            <td>0.00239226</td>
+                            <td>0.005379747</td>
+                            <td>0.438554345</td>
+                            <td>-0.144879017</td>
+                            <td>-0.665534902</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">3.032876712</td>
+                            <td>275</td>
+                            <td>79115</td>
+                            <td>2.842810086</td>
+                            <td>31.39724331</td>
+                            <td>0.021176967</td>
+                            <td>0.009626846</td>
+                            <td>0.010890642</td>
+                            <td>0.65656998</td>
+                            <td>-0.03721762</td>
+                            <td>-0.564936377</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">3.967123288</td>
+                            <td>267</td>
+                            <td>53101</td>
+                            <td>2.688490269</td>
+                            <td>31.26711719</td>
+                            <td>0.017665401</td>
+                            <td>0.018947888</td>
+                            <td>0.013010371</td>
+                            <td>0.807814382</td>
+                            <td>-0.182680237</td>
+                            <td>-0.560670045</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">4.890410959</td>
+                            <td>159</td>
+                            <td>52693</td>
+                            <td>1.552643471</td>
+                            <td>32.2578296</td>
+                            <td>0.028918897</td>
+                            <td>0.027907844</td>
+                            <td>0.021818079</td>
+                            <td>0.823247489</td>
+                            <td>-0.058503308</td>
+                            <td>-0.57974662</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">5.791780822</td>
+                            <td>159</td>
+                            <td>27492</td>
+                            <td>2.298211764</td>
+                            <td>32.48866906</td>
+                            <td>0.033700188</td>
+                            <td>0.027745711</td>
+                            <td>0.01793108</td>
+                            <td>0.729077709</td>
+                            <td>-0.22541224</td>
+                            <td>-0.386937004</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">6.731506849</td>
+                            <td>103</td>
+                            <td>30525</td>
+                            <td>2.207475167</td>
+                            <td>31.12833381</td>
+                            <td>0.018608727</td>
+                            <td>0.031240944</td>
+                            <td>0.019463641</td>
+                            <td>0.695570539</td>
+                            <td>-0.387771958</td>
+                            <td>-0.636854853</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">7.693150685</td>
+                            <td>166</td>
+                            <td>37537</td>
+                            <td>NA</td>
+                            <td>32.19249926</td>
+                            <td>0.027834685</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.213171071</td>
+                            <td>-0.467318014</td>
+                        </tr>
+                        <tr>
+                            <td align="right">6</td>
+                            <td align="right">8.553424658</td>
+                            <td>151</td>
+                            <td>72101</td>
+                            <td>1.705444496</td>
+                            <td>31.71038152</td>
+                            <td>0.022279003</td>
+                            <td>0.049153804</td>
+                            <td>0.040276855</td>
+                            <td>0.864631697</td>
+                            <td>-0.305156594</td>
+                            <td>-0.462049112</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">0.136986301</td>
+                            <td>676</td>
+                            <td>500000</td>
+                            <td>0.293379715</td>
+                            <td>32.09284542</td>
+                            <td>0.010528102</td>
+                            <td>0.000664597</td>
+                            <td>0.000594011</td>
+                            <td>0.003734733</td>
+                            <td>-0.73101688</td>
+                            <td>-1.059960824</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">0.410958904</td>
+                            <td>1110</td>
+                            <td>46498</td>
+                            <td>0.230973239</td>
+                            <td>31.53425013</td>
+                            <td>0.011548783</td>
+                            <td>0.004037112</td>
+                            <td>0.000294304</td>
+                            <td>0.014403802</td>
+                            <td>0.010379746</td>
+                            <td>-0.697697182</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">1.101369863</td>
+                            <td>1082</td>
+                            <td>4089</td>
+                            <td>0.539997972</td>
+                            <td>31.55667603</td>
+                            <td>0.021379863</td>
+                            <td>0.008956778</td>
+                            <td>0.001603682</td>
+                            <td>0.083714661</td>
+                            <td>-0.096767668</td>
+                            <td>-0.60761054</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">1.6</td>
+                            <td>NA</td>
+                            <td>6623</td>
+                            <td>0.358785212</td>
+                            <td>31.9525837</td>
+                            <td>0.024032882</td>
+                            <td>0.0001237</td>
+                            <td>0.006660407</td>
+                            <td>0.532233893</td>
+                            <td>-0.120563275</td>
+                            <td>-0.571081618</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">2.115068493</td>
+                            <td>780</td>
+                            <td>5267</td>
+                            <td>0.826987662</td>
+                            <td>31.49488659</td>
+                            <td>0.0213341</td>
+                            <td>0.008264741</td>
+                            <td>0.007266776</td>
+                            <td>0.467884766</td>
+                            <td>-0.299146919</td>
+                            <td>-0.686100254</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">2.597260274</td>
+                            <td>726</td>
+                            <td>7738</td>
+                            <td>1.036456061</td>
+                            <td>32.55631428</td>
+                            <td>0.027946659</td>
+                            <td>0.00398767</td>
+                            <td>0.011934059</td>
+                            <td>0.794354039</td>
+                            <td>-0.163490025</td>
+                            <td>-0.611848886</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">2.994520548</td>
+                            <td>792</td>
+                            <td>6641</td>
+                            <td>0.998088226</td>
+                            <td>32.46887089</td>
+                            <td>0.025324223</td>
+                            <td>0.012248546</td>
+                            <td>0.021305264</td>
+                            <td>1.431453539</td>
+                            <td>-0.280161049</td>
+                            <td>-0.630913488</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">3.454794521</td>
+                            <td>786</td>
+                            <td>7451</td>
+                            <td>1.59408391</td>
+                            <td>32.76187696</td>
+                            <td>0.030103769</td>
+                            <td>0.009402638</td>
+                            <td>0.029665085</td>
+                            <td>2.153319618</td>
+                            <td>-0.235574029</td>
+                            <td>-0.791629479</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">5.161643836</td>
+                            <td>711</td>
+                            <td>19298</td>
+                            <td>1.731935981</td>
+                            <td>31.97444057</td>
+                            <td>0.023730205</td>
+                            <td>0.013092254</td>
+                            <td>0.033196866</td>
+                            <td>2.194643323</td>
+                            <td>-0.255377968</td>
+                            <td>-0.747155528</td>
+                        </tr>
+                        <tr>
+                            <td align="right">7</td>
+                            <td align="right">6.679452055</td>
+                            <td>515</td>
+                            <td>20282</td>
+                            <td>1.311545677</td>
+                            <td>31.81055511</td>
+                            <td>0.023215218</td>
+                            <td>0.015382226</td>
+                            <td>0.039512522</td>
+                            <td>2.561415001</td>
+                            <td>-0.24591256</td>
+                            <td>-0.717611453</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">0.197260274</td>
+                            <td>655</td>
+                            <td>17185</td>
+                            <td>0.386217015</td>
+                            <td>32.36461921</td>
+                            <td>0.028354276</td>
+                            <td>0.004605104</td>
+                            <td>0.001272277</td>
+                            <td>0.111644573</td>
+                            <td>0.1150189</td>
+                            <td>-0.496095644</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">0.536986301</td>
+                            <td>664</td>
+                            <td>15093</td>
+                            <td>0.880178289</td>
+                            <td>33.00190024</td>
+                            <td>0.035544616</td>
+                            <td>0.004445306</td>
+                            <td>0.009946749</td>
+                            <td>0.718566603</td>
+                            <td>0.005348092</td>
+                            <td>-0.595519498</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">1.205479452</td>
+                            <td>513</td>
+                            <td>18421</td>
+                            <td>1.092483752</td>
+                            <td>33.16803854</td>
+                            <td>0.047079004</td>
+                            <td>0.000116299</td>
+                            <td>0.015733547</td>
+                            <td>1.059029654</td>
+                            <td>0.111861614</td>
+                            <td>-0.554446336</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">1.652054795</td>
+                            <td>689</td>
+                            <td>15697</td>
+                            <td>0.59061237</td>
+                            <td>33.49530454</td>
+                            <td>0.043252021</td>
+                            <td>0.013560605</td>
+                            <td>0.018393672</td>
+                            <td>1.299316641</td>
+                            <td>-0.081099275</td>
+                            <td>-0.5982362</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">2.112328767</td>
+                            <td>439</td>
+                            <td>6950</td>
+                            <td>0.736573403</td>
+                            <td>32.15648506</td>
+                            <td>0.03515476</td>
+                            <td>0.024591851</td>
+                            <td>0.020361374</td>
+                            <td>0.859261301</td>
+                            <td>-0.201378317</td>
+                            <td>-0.66762773</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">2.632876712</td>
+                            <td>575</td>
+                            <td>10120</td>
+                            <td>0.852615333</td>
+                            <td>31.80313185</td>
+                            <td>0.033938679</td>
+                            <td>0.023003459</td>
+                            <td>0.022465792</td>
+                            <td>1.09338332</td>
+                            <td>-0.135891276</td>
+                            <td>-0.541665281</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">3.046575342</td>
+                            <td>529</td>
+                            <td>9577</td>
+                            <td>0.069243295</td>
+                            <td>32.90410288</td>
+                            <td>0.036030895</td>
+                            <td>0.000391812</td>
+                            <td>0.026407657</td>
+                            <td>2.024548482</td>
+                            <td>-0.113463966</td>
+                            <td>-0.676594823</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">3.284931507</td>
+                            <td>363</td>
+                            <td>12231</td>
+                            <td>0.0727297</td>
+                            <td>32.99070303</td>
+                            <td>0.037487924</td>
+                            <td>0.000393498</td>
+                            <td>0.033878959</td>
+                            <td>2.629304762</td>
+                            <td>-0.105038607</td>
+                            <td>-0.61844981</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">3.723287671</td>
+                            <td>418</td>
+                            <td>14672</td>
+                            <td>0.547998221</td>
+                            <td>32.49996792</td>
+                            <td>0.037083103</td>
+                            <td>0.012681685</td>
+                            <td>0.02472727</td>
+                            <td>1.789068474</td>
+                            <td>-0.103734287</td>
+                            <td>-0.658924893</td>
+                        </tr>
+                        <tr>
+                            <td align="right">8</td>
+                            <td align="right">4.504109589</td>
+                            <td>321</td>
+                            <td>44503</td>
+                            <td>1.231625208</td>
+                            <td>30.5739057</td>
+                            <td>0.024226973</td>
+                            <td>0.007755678</td>
+                            <td>0.032789105</td>
+                            <td>2.333146846</td>
+                            <td>-0.534094142</td>
+                            <td>-0.866500498</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">0.216438356</td>
+                            <td>574</td>
+                            <td>2219</td>
+                            <td>0.059591526</td>
+                            <td>31.14313914</td>
+                            <td>0.020094005</td>
+                            <td>0.00032336</td>
+                            <td>0.000287384</td>
+                            <td>0.017517426</td>
+                            <td>-0.214518501</td>
+                            <td>-0.693673144</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">0.517808219</td>
+                            <td>579</td>
+                            <td>4375</td>
+                            <td>0.069738129</td>
+                            <td>30.64588308</td>
+                            <td>0.019931541</td>
+                            <td>0.01367974</td>
+                            <td>0.007749255</td>
+                            <td>0.569098678</td>
+                            <td>-0.219761022</td>
+                            <td>-0.530308493</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">1.230136986</td>
+                            <td>503</td>
+                            <td>5303</td>
+                            <td>0.332578806</td>
+                            <td>31.9011365</td>
+                            <td>0.025078578</td>
+                            <td>0.002552625</td>
+                            <td>0.001577746</td>
+                            <td>0.32337459</td>
+                            <td>-0.155923209</td>
+                            <td>-0.561981615</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">1.882191781</td>
+                            <td>484</td>
+                            <td>10119</td>
+                            <td>0.509147706</td>
+                            <td>33.06030842</td>
+                            <td>0.039847582</td>
+                            <td>0.023871073</td>
+                            <td>0.001861089</td>
+                            <td>0.084110608</td>
+                            <td>-0.036450903</td>
+                            <td>-0.626619999</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">2.131506849</td>
+                            <td>519</td>
+                            <td>28644</td>
+                            <td>1.29450848</td>
+                            <td>31.65403552</td>
+                            <td>0.022910219</td>
+                            <td>0.026081953</td>
+                            <td>0.011031233</td>
+                            <td>0.461718894</td>
+                            <td>-0.152676729</td>
+                            <td>-0.696467935</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">2.361643836</td>
+                            <td>465</td>
+                            <td>15767</td>
+                            <td>0.072311027</td>
+                            <td>32.99783229</td>
+                            <td>0.036245786</td>
+                            <td>0.013769473</td>
+                            <td>0.011545796</td>
+                            <td>0.847036098</td>
+                            <td>-0.062917464</td>
+                            <td>-0.636882534</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">2.8</td>
+                            <td>460</td>
+                            <td>26028</td>
+                            <td>1.059759766</td>
+                            <td>30.79606402</td>
+                            <td>0.016620032</td>
+                            <td>0.029650833</td>
+                            <td>0.00901087</td>
+                            <td>0.423789112</td>
+                            <td>-0.385301148</td>
+                            <td>-0.779705556</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">3.147945205</td>
+                            <td>504</td>
+                            <td>26391</td>
+                            <td>1.261654627</td>
+                            <td>30.86873656</td>
+                            <td>0.016058172</td>
+                            <td>0.025817715</td>
+                            <td>0.00676213</td>
+                            <td>0.315031046</td>
+                            <td>-0.418106848</td>
+                            <td>-0.808590829</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">3.509589041</td>
+                            <td>423</td>
+                            <td>22056</td>
+                            <td>0.894860028</td>
+                            <td>31.40652627</td>
+                            <td>0.019681959</td>
+                            <td>0.007562811</td>
+                            <td>0.009155456</td>
+                            <td>0.784317479</td>
+                            <td>-0.363606965</td>
+                            <td>-0.744407425</td>
+                        </tr>
+                        <tr>
+                            <td align="right">9</td>
+                            <td align="right">3.739726027</td>
+                            <td>474</td>
+                            <td>18817</td>
+                            <td>0.45677677</td>
+                            <td>30.87509539</td>
+                            <td>0.017142556</td>
+                            <td>0.025657205</td>
+                            <td>0.025437307</td>
+                            <td>1.029721532</td>
+                            <td>-0.440396787</td>
+                            <td>-0.799926598</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">0.065753425</td>
+                            <td>803</td>
+                            <td>41</td>
+                            <td>NA</td>
+                            <td>30.4010054</td>
+                            <td>0.023473996</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.179140771</td>
+                            <td>-0.564594161</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">0.304109589</td>
+                            <td>1115</td>
+                            <td>40</td>
+                            <td>NA</td>
+                            <td>32.61520026</td>
+                            <td>0.04805921</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.05777739</td>
+                            <td>-0.597351036</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">0.835616438</td>
+                            <td>1009</td>
+                            <td>40</td>
+                            <td>NA</td>
+                            <td>32.78095787</td>
+                            <td>0.03781498</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.038566237</td>
+                            <td>-0.580157506</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">1.065753425</td>
+                            <td>1048</td>
+                            <td>40</td>
+                            <td>NA</td>
+                            <td>33.10481989</td>
+                            <td>0.04123612</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>0.018570575</td>
+                            <td>-0.610744361</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">1.523287671</td>
+                            <td>959</td>
+                            <td>40</td>
+                            <td>NA</td>
+                            <td>30.14418838</td>
+                            <td>0.014330317</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.288326454</td>
+                            <td>-0.596232338</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">1.98630137</td>
+                            <td>944</td>
+                            <td>40</td>
+                            <td>NA</td>
+                            <td>33.38391243</td>
+                            <td>0.058418278</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>0.036581985</td>
+                            <td>-0.62942434</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">2.446575342</td>
+                            <td>894</td>
+                            <td>51</td>
+                            <td>NA</td>
+                            <td>30.4308189</td>
+                            <td>0.025725826</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>-0.030031647</td>
+                            <td>-0.588650623</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">2.906849315</td>
+                            <td>840</td>
+                            <td>74</td>
+                            <td>NA</td>
+                            <td>30.22814509</td>
+                            <td>0.027746901</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>NA</td>
+                            <td>0.068284531</td>
+                            <td>-0.520502398</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">3.367123288</td>
+                            <td>1013</td>
+                            <td>2977</td>
+                            <td>0.058871495</td>
+                            <td>29.67158476</td>
+                            <td>0.035142618</td>
+                            <td>0.000353231</td>
+                            <td>0.000266206</td>
+                            <td>0.00261076</td>
+                            <td>0.578332896</td>
+                            <td>-0.247450585</td>
+                        </tr>
+                        <tr>
+                            <td align="right">10</td>
+                            <td align="right">3.82739726</td>
+                            <td>859</td>
+                            <td>6312</td>
+                            <td>0.291702847</td>
+                            <td>30.13042032</td>
+                            <td>0.025710872</td>
+                            <td>0.000152282</td>
+                            <td>0.006274879</td>
+                            <td>0.472162659</td>
+                            <td>-0.148697094</td>
+                            <td>-0.568715804</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
+
+        <script type="text/javascript ">
+            $(document).ready(function() {
+                $('#sidebarCollapse').on('click', function() {
+                    $('#sidebar').toggleClass('active');
+                    $(this).toggleClass('active');
+                });
+            });
+        </script>
+
+        <!-- JS for Statistic description -->
+        <script>
+            function openStatistic(evt, statName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent ");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none ";
+                }
+                tablinks = document.getElementsByClassName("tablinks ");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active ", " ");
+                }
+                document.getElementById(statName).style.display = "block ";
+                evt.currentTarget.className += " active ";
+            }
+        </script>
+
+        <script>
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
+
+        <script src="../js/diversity.js"></script>
+
+
+
+</body>
+
+</html>
