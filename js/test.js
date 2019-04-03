@@ -40,7 +40,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             patientSelector3 = innerContainer3.querySelector('.patientdata3');
 
         //This affects the dropdown menu, makes an array listofPatients
-        for (var i = 4; i < allPatientIDs.length; i++) {
+        for (var i = 0; i < allPatientIDs.length; i++) {
             if (listofPatients.indexOf(allPatientIDs[i]) === -1) {
                 listofPatients.push(allPatientIDs[i]);
             } else if (plusALL.indexOf(allPatientIDs[i]) === -1) {
