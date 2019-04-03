@@ -32,7 +32,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         console.log(listofPatients[10]);
 
 
-
         var trace1 = [];
 
         function getPatientData(chosenPatient) {
@@ -56,7 +55,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                 } else if (allPatientIDs[i] === chosenPatient) {
                     currentHIVPi.push(allHIV_div[i]);
                     currentTimePoint.push(allTimePoints[i]);
-
                     trace1 = {
                         x: currentTimePoint,
                         y: currentHIVPi,

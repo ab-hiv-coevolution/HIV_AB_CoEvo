@@ -174,9 +174,9 @@
 
                 <div class="tab-pane fade" id="Divergence" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="tab">
-                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Non_Syn')" id="defaultOpen">HIV Non-Synonymous</button>
-                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Syn')">HIV Synonymous </button>
-                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Divergence')">Antibody</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Non_Syn')" id="defaultOpen">HIV Non-Synonymous Divergence</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Syn')">HIV Synonymous Divergence</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Divergence')">Antibody Divergence</button>
                     </div>
 
                     <div id="HIV_Non_Syn" class="tabcontent">
@@ -197,10 +197,9 @@
 
                     <div id="Antibody_Divergence" class="tabcontent">
                         <br>
-                        <h3>HIV Non-Synonymous Divergence </h3>
+                        <h3>Antibody Repertoire Divergence</h3>
                         <p>The proportion of mutations in a sequence, relative to its inferred naïve ancestor sequence. The naïve ancestor sequence isinferred using <a href="https://changeo.readthedocs.io/en/version-0.4.5/">Change-O.</a> This is averaged
                             across all sequences in a sample.</p>
-
                     </div>
                 </div>
 
@@ -224,14 +223,6 @@
                         <p>A measure of the amount of mutations that help a given sequence (or B cell) generate offspring. Estimated using
                             <a href="http://selection.med.yale.edu/baseline/">BASELINe</a>. This compares the number of observed mutations in a sequence to the number of mutations that would be expected if there were no selection (i.e. neutrality). Values
                             less than 0 indicate purifying selection, and values greater than 0 indicate positive selection.</p>
-
-                    </div>
-
-                    <div id="Antibody_Divergence " class="tabcontent ">
-                        <br>
-                        <h3>HIV Non-Synonymous Divergence </h3>
-                        <p>The proportion of mutations in a sequence, relative to its inferred naïve ancestor sequence. The naïve ancestor sequence isinferred using <a href="https://changeo.readthedocs.io/en/version-0.4.5/ ">Change-O.</a> This is averaged
-                            across all sequences in a sample.</p>
 
                     </div>
                 </div>

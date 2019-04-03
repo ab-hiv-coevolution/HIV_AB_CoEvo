@@ -11,20 +11,21 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
         var allPatientIDs = unpack(rows, 'patient_id'),
             allTimePoints = unpack(rows, 'time_point'),
-            allABDPi = unpack(rows, 'ab_diversity_pi'),
-            allHIVDpi = unpack(rows, 'hiv_diversity_pi'),
-            allHIVDivergenceNonsyn = unpack(rows, 'hiv_non_synonymous_divergence'),
-            allHIVDivergenceSyn = unpack(rows, 'hiv_synonymous_divergence'),
-            allABDivergence = unpack(rows, 'ab_divergence'),
-            allABCDR = unpack(rows, 'abr_baseline_mean_sigma_CDR'),
-            allABFWR = unpack(rows, 'abr_baseline_mean_sigma_FWR'),
-            allHIVSelection = unpack(rows, 'hiv_selection_dN_dS'),
+            alldiversityAntibody = unpack(rows, 'ab_diversity_pi'),
+            alldiversityHIV = unpack(rows, 'hiv_diversity_pi'),
+            alldivergenceHIVNonSynonymous = unpack(rows, 'hiv_non_synonymous_divergence'),
+            alldivergenceHIVSynonymous = unpack(rows, 'hiv_synonymous_divergence'),
+            alldivergenceAntibody = unpack(rows, 'ab_divergence'),
+            allselectionABCDR = unpack(rows, 'abr_baseline_mean_sigma_CDR'),
+            allselectionABFWR = unpack(rows, 'abr_baseline_mean_sigma_FWR'),
+            allselectionHIV = unpack(rows, 'hiv_selection_dN_dS'),
             listofDivergence = ["Antibody", "HIV Synonymous", "HIV Non-Synonymous", "All"],
             listofDiversity = ["Antibody", "HIV", "Both"],
             listofSelection = ["AB CDR", "AB FWR", "HIV"],
             currentPatient,
             holdDat,
             holdPat,
+            holdAllDat = [],
             listofPatients = [],
             currentData = [],
             currentTimePoint = [];
@@ -34,18 +35,19 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             if (listofPatients.indexOf(allPatientIDs[i]) === -1) {
                 listofPatients.push(allPatientIDs[i]);
             }
-        } //listofPatients.push("All Patients");
+        }
+        listofPatients.push("All Patients");
 
         console.log("Check1:" + holdDat);
-        console.log("Check2" + holdPat);
+        //console.log("Check2" + holdPat);
 
         //This function gets the data from the patient chosen on the dropdown
         function getPatientData(chosenPatient, chosenData) {
-            console.log("Check3: " + chosenData);
+            //console.log("Check3: " + chosenData);
             holdDat = chosenData;
             holdPat = chosenPatient;
             console.log("Check4:" + holdDat);
-            console.log("Check5" + holdPat);
+            //console.log("Check5" + holdPat);
             currentData = [];
             currentTimePoint = [];
             for (var i = 0; i < allPatientIDs.length; i++) {
@@ -53,32 +55,32 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                     currentTimePoint.push(allTimePoints[i]);
                     switch (chosenData) {
                         case "diversityAntibody":
-                            currentData.push(allABDPi[i]);
+                            currentData.push(alldiversityAntibody[i]);
                             break;
                         case "diversityHIV":
-                            currentData.push(allHIVDpi[i]);
+                            currentData.push(alldiversityHIV[i]);
                             break;
                         case "diversityBoth":
                             break;
                         case "divergenceAntibody":
-                            currentData.push(allABDivergence[i]);
+                            currentData.push(alldivergenceAntibody[i]);
                             break;
-                        case "divergenceHIV Non-Synonymous":
-                            currentData.push(allHIVDivergenceNonsyn[i]);
+                        case "divergenceHIVNonSynonymous":
+                            currentData.push(alldivergenceHIVNonSynonymous[i]);
                             break;
-                        case "divergenceHIV Synonymous":
-                            currentData.push(allHIVDivergenceSyn[i]);
+                        case "divergenceHIVSynonymous":
+                            currentData.push(alldivergenceHIVSynonymous[i]);
                             break;
                         case "divergenceAll":
                             break;
-                        case "selectionAB CDR":
-                            currentData.push(allABCDR[i]);
+                        case "selectionABCDR":
+                            currentData.push(allselectionABCDR[i]);
                             break;
-                        case "selectionAB FWR":
-                            currentData.push(allABFWR[i]);
+                        case "selectionABFWR":
+                            currentData.push(allselectionABFWR[i]);
                             break;
                         case "selectionHIV":
-                            currentData.push(allHIVSelection[i]);
+                            currentData.push(allselectionHIV[i]);
                             break;
 
 
@@ -91,10 +93,11 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         // Default Patient 1 Data
         setBubblePlot('1', 'diversityAntibody');
 
-        //
+
+
         function setBubblePlot(chosenPatient, chosenData) {
             getPatientData(chosenPatient, chosenData);
-            console.log('Check6:' + currentData);
+            //console.log('Check6:' + currentData);
             console.log('Check7:' + chosenPatient)
             var trace1 = {
                 x: currentTimePoint,
@@ -141,43 +144,66 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
         // This code populates the info to the plots and the dropdowns.
         var innerContainer = document.querySelector('[data-num="0"]'),
-            //plotEl = innerContainer.querySelector('.plot'),
             patientSelector = innerContainer.querySelector('.patientnumber');
         diversitySelector = innerContainer.querySelector('.diversity');
         divergenceSelector = innerContainer.querySelector('.divergence');
         selectionSelector = innerContainer.querySelector('.selection');
 
+
+        // Sets options for dropdown selection including null values for the data lists
+
+        function assignDatOptions(textArray, selector) {
+            document.getElementById(selector.id).insertBefore(new Option('- Select Value -', ''),
+                document.getElementById(selector.id).firstChild);
+            for (var i = 0; i < textArray.length; i++) {
+                var currentOption = document.createElement('option');
+                currentOption.text = textArray[i];
+                selector.appendChild(currentOption);
+            }
+        }
+
+
+        // Sets options to select for the patient list.
         function assignOptions(textArray, selector) {
             for (var i = 0; i < textArray.length; i++) {
                 var currentOption = document.createElement('option');
                 currentOption.text = textArray[i];
-                //document.getElementById(selector.id).insertBefore(new Option('-- Select Value --', ''), 
-                //document.getElementById(selector.id).firstChild);
                 selector.appendChild(currentOption);
             }
         }
 
 
         assignOptions(listofPatients, patientSelector);
-        assignOptions(listofDiversity, diversitySelector);
-        assignOptions(listofDivergence, divergenceSelector);
-        assignOptions(listofSelection, selectionSelector);
+        assignDatOptions(listofDiversity, diversitySelector);
+        assignDatOptions(listofDivergence, divergenceSelector);
+        assignDatOptions(listofSelection, selectionSelector);
+
+        function between(x, min, max) {
+            if (min <= x <= max) { return true };
+        };
 
 
-        function update(e) {
-            if (e.target.id === 'patientnumber') {
-                console.log("id Check1:" + e.target.id);
+        function updates(e) {
+            if (e.target.id === 'patientnumber' && e.target.value === 'All Patients') {
+                console.log("id Check1:" + holdDat);
+                var all = "all";
+                alldrops = all.concat(holdDat);
+                alldrops.replace(/-|\s/g, '');
+                console.log("Check alldrops:" + alldrops);
+                updateGraph(alldrops);
+            } else if (e.target.id === 'patientnumber') {
                 updatePatient();
+
             } else if (e.target.id === 'diversity' || 'divergence' || 'selection') {
                 dropOrigin = e.target.id;
                 dropVal = e.target.value;
-                drops = dropOrigin.concat(dropVal);
-                console.log("id Check1:" + e.target.id);
+                drops = dropOrigin.concat(dropVal.replace(/-|\s/g, ''));
+                //console.log("id Check1:" + e.target.id);
                 console.log("Check Drops: " + drops)
                 updateData(drops);
 
             }
-        }
+        };
 
 
 
@@ -190,8 +216,64 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             setBubblePlot(holdPat, input);
         }
 
-        patientSelector.addEventListener('change', update, false);
-        diversitySelector.addEventListener('change', update, false);
-        divergenceSelector.addEventListener('change', update, false);
-        selectionSelector.addEventListener('change', update, false);
+        function getAllDat(input) {
+            holdAllDat = [];
+            switch (input) {
+                case "alldiversityAntibody":
+                    holdAllDat = alldiversityAntibody;
+                    break;
+                case "alldiversityHIV":
+                    holdAllDat.push(alldiversityHIV);
+                    break;
+                case "alldiversityBoth":
+                    break;
+                case "alldivergenceAntibody":
+                    holdAllDat.push(alldivergenceAntibody);
+                    break;
+                case "alldivergenceHIVNonSynonymous":
+                    holdAllDat.push(alldivergenceHIVNonSynonymous);
+                    break;
+                case "alldivergenceHIVSynonymous":
+                    holdAllDat.push(alldivergenceHIVSynonymous);
+                    break;
+                case "alldivergenceAll":
+                    break;
+                case "allselectionABCDR":
+                    holdAllDat.push(allselectionABCDR);
+                    break;
+                case "allselectionABFWR":
+                    holdAllDat.push(allselectionABFWR);
+                    break;
+                case "allselectionHIV":
+                    holdAllDat.push(allselectionHIV);
+                    break;
+            }
+            console.log("Check Hold1: " + holdAllDat)
+                //return holdAllDat;
+        }
+
+        function updateGraph(input) {
+            console.log("Check Graph: " + input);
+            getAllDat(input);
+            console.log("Check Hold: " + allPatientIDs);
+            var allPatientUpdate = {
+                type: 'scatter',
+                mode: 'lines+markers',
+                x: allTimePoints,
+                y: holdAllDat,
+                text: allPatientIDs,
+                transforms: [{
+                    type: 'groupby',
+                    groups: allPatientIDs,
+                }]
+            }
+            Plotly.newPlot(plotdiv, allPatientUpdate);
+
+        }
+
+
+        patientSelector.addEventListener('change', updates, false);
+        diversitySelector.addEventListener('change', updates, false);
+        divergenceSelector.addEventListener('change', updates, false);
+        selectionSelector.addEventListener('change', updates, false);
     });

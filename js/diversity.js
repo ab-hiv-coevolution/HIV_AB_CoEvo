@@ -100,7 +100,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                 } else if (allPatientIDs[i] === chosenPatient) {
                     currentABDPi.push(allABDPi[i]);
                     currentTimePoint.push(allTimePoints[i]);
-
                     trace2 = {
                         x: currentTimePoint,
                         y: currentABDPi,

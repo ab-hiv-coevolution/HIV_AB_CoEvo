@@ -106,7 +106,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         };
 
         var innerContainer = document.querySelector('[data-num3="0"'),
-            plotEl = innerContainer.querySelector('.plot'),
+            //plotEl = innerContainer.querySelector('.plot'),
             patientSelector = innerContainer.querySelector('.patientdata3');
 
         function assignOptions(textArray, selector) {
