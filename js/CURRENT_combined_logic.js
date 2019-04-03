@@ -199,7 +199,24 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             }
         };
 
-        assignOptions(listofPatients, patientSelector);
+        /* Old 
+                assignOptions(listofPatients, patientSelector);
+                */
+
+        assignOptions(listofPatients, patientSelector1);
+        assignOptions(listofPatients, patientSelector2);
+        assignOptions(listofPatients, patientSelector3);
+        assignOptions(listofPatients, patientSelector4);
+        assignOptions(listofPatients, patientSelector5);
+        assignOptions(listofPatients, patientSelector6);
+        assignOptions(listofPatients, patientSelector7);
+        assignOptions(listofPatients, patientSelector8);
+        assignOptions(listofPatients, patientSelector9);
+        assignOptions(listofPatients, patientSelector9);
+
+
+
+
 
         function updateData(e, dataVal) {
             //console.log(e.id);
