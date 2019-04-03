@@ -2,7 +2,6 @@
 
 Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patch-1/dataset_031519.csv",
     function(err, rows) {
-
         function unpack(rows, key) {
             return rows.map(function(row) {
                 return row[key];
@@ -34,9 +33,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             }
         }
         listofPatients.push("All Patients")
-
-
-
 
 
         //This function gets the data from the patient chosen on the dropdown (original function)
@@ -156,7 +152,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                 }
             };
 
-            Plotly.newPlot(plotdiv, data, layout, { showSendToCloud: true, responsive: true });
+            Plotly.newPlot(plotdiv1, data, layout, { showSendToCloud: true, responsive: true });
         };
 
         var buttons = document.querySelectorAll('.tablinks');
@@ -184,12 +180,45 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             setBubblePlot(holdPat, statName)
             holdDat = statName;
         }
+        /*
+                // This code populates the info to the plots and the dropdowns.
+                var innerContainer = document.querySelector('[data-num="0"]'),
+                    plotEl = innerContainer.querySelector('.plot'),
+                    patientSelector = innerContainer.querySelector('.patientdata');
+                    */
+
+        //Dropdown1: HIV Diversity
+        var innerContainer1 = document.querySelector('[data-num1="0"]'),
+            patientSelector1 = innerContainer1.querySelector('.patientdata1'),
+            //Dropdown2: AB Diversity
+            innerContainer2 = document.querySelector('[data-num2="0"]'),
+            patientSelector2 = innerContainer2.querySelector('.patientdata2'),
+            //Dropdown3: HIV+Ab Diversity
+            innerContainer3 = document.querySelector('[data-num3="0"]'),
+            patientSelector3 = innerContainer3.querySelector('.patientdata3'),
+            //Dropdown4: HIV non-syn Divergence
+            innerContainer4 = document.querySelector('[data-num4="0"]'),
+            patientSelector4 = innerContainer4.querySelector('.patientdata4'),
+            //Dropdown5: HIV syn Divergence
+            innerContainer5 = document.querySelector('[data-num5="0"]'),
+            patientSelector5 = innerContainer5.querySelector('.patientdata5'),
+            //Dropdown6: Ab Divergence
+            innerContainer6 = document.querySelector('[data-num6="0"]'),
+            patientSelector6 = innerContainer6.querySelector('.patientdata6'),
+            //Dropdown7: HIV+Ab Diversity
+            innerContainer7 = document.querySelector('[data-num7="0"]'),
+            patientSelector7 = innerContainer7.querySelector('.patientdata7'),
+            //Dropdown8: HIV+Ab Diversity
+            innerContainer8 = document.querySelector('[data-num8="0"]'),
+            patientSelector8 = innerContainer8.querySelector('.patientdata8'),
+            //Dropdown9: CD4 count
+            innerContainer9 = document.querySelector('[data-num9="0"]'),
+            patientSelector9 = innerContainer9.querySelector('.patientdata9'),
+            //Dropdown10: Viral load
+            innerContainer10 = document.querySelector('[data-num10="0"]'),
+            patientSelector10 = innerContainer10.querySelector('.patientdata10');
 
 
-        // This code populates the info to the plots and the dropdowns.
-        var innerContainer = document.querySelector('[data-num="0"]'),
-            plotEl = innerContainer.querySelector('.plot'),
-            patientSelector = innerContainer.querySelector('.patientdata');
 
         function assignOptions(textArray, selector) {
             for (var i = 0; i < textArray.length; i++) {
@@ -203,6 +232,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                 assignOptions(listofPatients, patientSelector);
                 */
 
+        //Each selector has a unique HTML element id which correlates to the variables innerContainer and patientSelector
         assignOptions(listofPatients, patientSelector1);
         assignOptions(listofPatients, patientSelector2);
         assignOptions(listofPatients, patientSelector3);
@@ -213,10 +243,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         assignOptions(listofPatients, patientSelector8);
         assignOptions(listofPatients, patientSelector9);
         assignOptions(listofPatients, patientSelector9);
-
-
-
-
+        assignOptions(listofPatients, patientSelector10);
 
         function updateData(e, dataVal) {
             //console.log(e.id);
@@ -229,7 +256,40 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             //console.log(holdDat);
         }
 
-
         patientSelector.addEventListener('change', updatePatient, false);
+
+
+
+
+
+        //JS for Statistic description
+        var buttons = document.querySelectorAll('.tablinks');
+        //console.log(buttons);
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', openStatistic, false);
+        }
+
+        function openStatistic(evt) {
+            var i, tabcontent, tablinks, statName, dataVal;
+            tabcontent = document.getElementsByClassName("tabcontent ");
+            //console.log(tabcontent);
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none ";
+            }
+            tablinks = document.getElementsByClassName("tablinks ");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active ", " ");
+            }
+            statName = evt.currentTarget.name;
+            document.getElementById(statName).style.display = "block ";
+            evt.currentTarget.className += " active ";
+            //graphData = document.getElementById(statName);
+            //console.log(statName);
+            setBubblePlot(holdPat, statName)
+            holdDat = statName;
+        }
+
+
+
 
     });
