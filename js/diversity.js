@@ -19,9 +19,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             allselectionABCDR = unpack(rows, 'abr_baseline_mean_sigma_CDR'),
             allselectionABFWR = unpack(rows, 'abr_baseline_mean_sigma_FWR'),
             allselectionHIV = unpack(rows, 'hiv_selection_dN_dS'),
-            listofDivergence = ["Antibody", "HIV Synonymous", "HIV Non-Synonymous", "All"], 
-            listofDiversity = ["Antibody", "HIV", "Both"],
-            listofSelection = ["AB CDR", "AB FWR", "HIV"],
             currentPatient,
             holdDat,
             holdPat,
@@ -38,9 +35,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         }
         listofPatients.push("All Patients")
 
-        console.log(allPatientIDs);
-        console.log(listofPatients[0]);
-        console.log(listofPatients[10]);
+        
 
 
 
@@ -66,15 +61,13 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             currentABDPi = [];
             currentTimePoint = [];
             trace1 = [];
-            holdDat = chosenData;
-            holdPat = chosenPatient;
             for (var i = 0; i < allPatientIDs.length; i++) {
                 if (chosenPatient === 'All Patients') {
                     trace1 = {
                         type: 'scatter',
                         mode: 'lines+markers',
                         x: allTimePoints,
-                        y: allABDPi,
+                        y: alldiversityHIV,
                         connectgaps: true,
                         text: allPatientIDs,
                         transforms: [{
@@ -86,24 +79,22 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                     currentTimePoint.push(allTimePoints[i]);
                     
                     switch (chosenData){
-                    case "diversityAntibody":
+                    case "Antibody_Diversity":
                         currentData.push(alldiversityAntibody[i]);
                         break;
-                    case "diversityHIV":
+                    case "HIV_Diversity":
                         currentData.push(alldiversityHIV[i]);
                         break;
-                    case "diversityBoth":
+                    case "Both_Diversity":
                         break;
                     case "divergenceAntibody":
                         currentData.push(alldivergenceAntibody[i]);
                         break;
-                    case "divergenceHIVNonSynonymous":
+                    case "HIV_Non_Syn":
                         currentData.push(alldivergenceHIVNonSynonymous[i]);
                         break;
-                    case "divergenceHIVSynonymous":
+                    case "HIV_Syn":
                         currentData.push(alldivergenceHIVSynonymous[i]);
-                        break;
-                    case "divergenceAll":
                         break;
                     case "selectionABCDR":
                         currentData.push(allselectionABCDR[i]);
@@ -118,7 +109,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                     }   
                         trace1 = {
                             x: currentTimePoint,
-                            y: currentABDPi,
+                            y: currentData,
                             mode: 'lines+markers',
                             type: 'scatter',
                             connectgaps: true,
@@ -136,15 +127,19 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         };
 
 
-        setBubblePlot("1");
+        //setBubblePlot("1", "HIV_Diversity");
 
         function setBubblePlot(chosenPatient, chosenData) {
-            getPatientData(chosenPatient);
+            console.log(chosenData);
+            console.log(chosenPatient);
+            getPatientData(chosenPatient, chosenData);
 
-            var data = [trace1];
+            var data = [trace1],
+                plotdiv = chosenData.concat("div");
+            
 
             var layout = {
-                title: 'AbR Diversity of Patient ' + chosenPatient,
+                title: chosenData + ' of Patient ' + chosenPatient,
                 titlefont: {
                     family: 'Poppins, sans-serif',
                 },
@@ -162,8 +157,34 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                 }
             };
 
-            Plotly.newPlot('plotdiv', data, layout, { showSendToCloud: true, responsive: true });
+            Plotly.newPlot(plotdiv, data, layout, { showSendToCloud: true, responsive: true });
         };
+
+        var buttons = document.querySelectorAll('.tablinks');
+        //console.log(buttons);
+        for (var i = 0 ; i < buttons.length; i++) {
+            buttons[i].addEventListener('click' , openStatistic , false ) ; 
+            }
+
+        function openStatistic(evt) {
+                    var i, tabcontent, tablinks, statName, dataVal;
+                    tabcontent = document.getElementsByClassName("tabcontent ");
+                    //console.log(tabcontent);
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none ";
+                    }
+                    tablinks = document.getElementsByClassName("tablinks ");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active ", " ");
+                    }
+                    statName = evt.currentTarget.name;
+                    document.getElementById(statName).style.display = "block ";
+                    evt.currentTarget.className += " active ";
+                    //graphData = document.getElementById(statName);
+                    //console.log(statName);
+                    setBubblePlot(holdPat, statName)
+                    holdDat = statName;
+                }
 
 
         // This code populates the info to the plots and the dropdowns.
@@ -181,10 +202,18 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
         assignOptions(listofPatients, patientSelector);
 
+        function updateData(e, dataVal){
+            //console.log(e.id);
+            setBubblePlot('1', dataVal)
+            //console.log(dataVal);
+        }
+
         function updatePatient() {
             setBubblePlot(patientSelector.value, holdDat);
+            //console.log(holdDat);
         }
-        console.log(event.target.id);
+
+
         patientSelector.addEventListener('change', updatePatient, false);
 
     });
