@@ -252,12 +252,15 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                 //console.log(dataVal);
         }
 
+
+        //need to find a way to connect the # part in patientSelector#
         function updatePatient() {
-            setBubblePlot(patientSelector + '[]'.value, holdDat);
+            setBubblePlot(patientSelector1.value, holdDat);
             //console.log(holdDat);
         }
 
-
-        patientSelector.addEventListener('change', updatePatient, false);
+        //need to find a way to connect the # part in patientSelector# for the event change
+        patientSelector1.addEventListener('change', updatePatient, false);
+        patientSelector2.addEventListener('change', updatePatient, false);
 
     });
