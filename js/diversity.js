@@ -27,6 +27,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             holdAllDat = [],
             listofPatients = [],
             currentData = [],
+            allData = [],
             currentTimePoint = [];
 
         //This affects the dropdown menu
@@ -60,17 +61,51 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         var trace1 = [];
 
         function getPatientData(chosenPatient, chosenData) {
-
+            allData = [];
             currentData = [];
             currentTimePoint = [];
             trace1 = [];
             for (var i = 0; i < allPatientIDs.length; i++) {
                 if (chosenPatient === 'All Patients') {
+                    switch (chosenData) {
+                        case "HIV_Diversity":
+                            allData = alldiversityHIV;
+                            break;
+                        case "Antibody_Diversity":
+                            allData = alldiversityAntibody;
+                            break;
+                        case "Both_Diversity":
+                            break;
+                        case "HIV_Non_Syn":
+                            allData = alldivergenceHIVNonSynonymous;
+                            break;
+                        case "HIV_Syn":
+                            allData = alldivergenceHIVSynonymous;
+                            break;
+                        case "Antibody_Divergence":
+                            allData = alldivergenceAntibody;
+                            break;
+                        case "HIV_Selection":
+                            allData = allselectionHIV;
+                            break;
+                        case "selectionABCDR":
+                            allData = allselectionABCDR;
+                            break;
+                        case "selectionABFWR":
+                            allData = allselectionABFWR;
+                            break;
+                        case "CD4_Count":
+                            allData = allCD4Count;
+                            break;
+                        case "Viral_Load":
+                            allData = allViralLoad;
+                            break;
+                    }
                     trace1 = {
                         type: 'scatter',
                         mode: 'lines+markers',
                         x: allTimePoints,
-                        y: alldiversityHIV,
+                        y: allData,
                         connectgaps: true,
                         text: allPatientIDs,
                         transforms: [{
@@ -80,8 +115,8 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                     }
                 } else if (allPatientIDs[i] === chosenPatient) {
                     currentTimePoint.push(allTimePoints[i]);
-                    console.log(chosenData);
-                    console.log(chosenPatient);
+                    //console.log(chosenData);
+                    //console.log(chosenPatient);
                     switch (chosenData) {
                         case "HIV_Diversity":
                             currentData.push(alldiversityHIV[i]);
@@ -115,9 +150,8 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                         case "Viral_Load":
                             currentData.push(allViralLoad[i]);
                             break;
-
                     }
-                    console.log(currentData);
+                    //console.log(currentData);
                     trace1 = {
                         x: currentTimePoint,
                         y: currentData,
@@ -134,7 +168,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                     }
                 }
             }
-
         };
 
         //setBubblePlot("1", "HIV_Diversity");
