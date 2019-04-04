@@ -137,7 +137,6 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
         };
 
-
         //setBubblePlot("1", "HIV_Diversity");
 
         function setBubblePlot(chosenPatient, chosenData) {
@@ -181,15 +180,15 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             tabcontent = document.getElementsByClassName("tabcontent ");
             console.log(tabcontent);
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none ";
+                tabcontent[i].style.display = "none";
             }
             tablinks = document.getElementsByClassName("tablinks ");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active ", " ");
             }
             statName = evt.currentTarget.name;
-            document.getElementById(statName).style.display = "block ";
-            evt.currentTarget.className += " active ";
+            document.getElementById(statName).style.display = "block";
+            evt.currentTarget.className += "active ";
             //graphData = document.getElementById(statName);
             //console.log(statName);
             setBubblePlot('1', statName)
@@ -200,7 +199,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             for (var i = 0; i < textArray.length; i++) {
                 var currentOption = document.createElement('option');
                 currentOption.text = textArray[i];
-                selector.appendChild(currentOption);
+                selector.add(currentOption);
             }
         };
 
@@ -228,13 +227,13 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             patientSelector7 = innerContainer7.querySelector('.patientdata7'),
             //Dropdown8: Antibody Selection
             innerContainer8 = document.querySelector('[data-num8="0"]'),
-            patientSelector8 = innerContainer7.querySelector('.patientdata8'),
+            patientSelector8 = innerContainer8.querySelector('.patientdata8'),
             //Dropdown9: CD4 Count
             innerContainer9 = document.querySelector('[data-num9="0"]'),
-            patientSelector9 = innerContainer7.querySelector('.patientdata9'),
+            patientSelector9 = innerContainer9.querySelector('.patientdata9'),
             //Dropdown10: Viral Load
             innerContainer10 = document.querySelector('[data-num10="0"]'),
-            patientSelector10 = innerContainer7.querySelector('.patientdata10');
+            patientSelector10 = innerContainer10.querySelector('.patientdata10');
 
         assignOptions(listofPatients, patientSelector1);
         assignOptions(listofPatients, patientSelector2);
@@ -254,7 +253,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         }
 
         function updatePatient() {
-            setBubblePlot(patientSelector + "0".value, holdDat);
+            setBubblePlot(patientSelector + '[]'.value, holdDat);
             //console.log(holdDat);
         }
 

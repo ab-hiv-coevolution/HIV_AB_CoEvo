@@ -8,12 +8,12 @@
 
     <!-- OP EDIT -->
     <title>HIV/Ab</title>
-    <link rel="icon" type="image/png" href="../logos/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style5.css">
+    <link rel="stylesheet" href="html_css/style5.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -26,6 +26,9 @@
 
     <!--Plotly.js-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
 </head>
 
 <!-- OP EDIT -->
@@ -40,7 +43,7 @@
             <div class="sidebar-header">
                 <a href="#">
                     <div class="small-logo">
-                        <img src="../logos/favicon.png">
+                        <img src="assets/favicon.png">
                     </div>
                 </a>
                 <h4>HIV/Ab EVO</h4>
@@ -48,19 +51,19 @@
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="index6_working.html">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">About</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="../html_css/about.html">Overview</a>
+                            <a href="html_css/about.html">Overview</a>
                         </li>
                         <li>
-                            <a href="../html_css/methods.html">Methods</a>
+                            <a href="html_css/methods.html">Methods</a>
                         </li>
                         <li>
-                            <a href="../html_css/data_table.html">Data</a>
+                            <a href="html_css/data_table.html">Data</a>
                         </li>
                     </ul>
                 </li>
@@ -92,10 +95,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="People.html">People</a>
+                                <a class="nav-link" href="html_css/People.html">People</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Publications.html">Publications</a>
+                                <a class="nav-link" href="html_css/Publications.html">Publications</a>
                             </li>
                         </ul>
                     </div>
@@ -104,45 +107,46 @@
 
             <!-- Inserting front page logo/css code added above -->
             <div class="logo">
-                <img src="../logos/main_logo.svg" class="center">
+                <img src="assets/main_logo.svg">
             </div>
 
             <hr>
             <h3>Explore the HIV and the Antibody Repertoire</h3>
             <br>
-            <!-- Inserting tabs (Diversity, Divergence, Selection ) -->
+
+            <!-- Bootstrap Inserting tabs (Diversity, Divergence, Selection ) -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" class=active>
-                    <a class="nav-link active" id="diversity-tab" data-toggle="tab" href="#Diversity" role="tab" aria-controls="Diversity" aria-selected="true" id="defaultOpen"> Diversity <span class="caret"></span></a>
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Diversity" role="tab" aria-controls="Diversity" aria-selected="true"> Diversity <span class="caret"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="divergence-tab" data-toggle="tab" href="#Divergence" role="tab" aria-controls="Divergence" aria-selected="false"> Divergence <span class="caret"></span></a>
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Divergence" role="tab" aria-controls="Divergence" aria-selected="false"> Divergence <span class="caret"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="selection-tab" data-toggle="tab" href="#Selection" role="tab" aria-controls="Selection" aria-selected="false"> Selection <span class="caret"></span></a>
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Selection" role="tab" aria-controls="Selection" aria-selected="false"> Selection <span class="caret"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="abundance-tab" data-toggle="tab" href="#Abundance" role="tab" aria-controls="Abundance" aria-selected="false"> Abundance <span class="caret"></span></a>
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Abundance" role="tab" aria-controls="Abundance" aria-selected="false"> Abundance <span class="caret"></span></a>
                 </li>
             </ul>
 
+
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="Diversity" role="tabpanel" aria-labelledby="diversity-tab">
+                <div class="tab-pane fade show active" id="Diversity" role="tabpanel" aria-labelledby="home-tab">
                     <div class="tab">
-                        <button name="HIV_Diversity" class="tablinks">HIV Diversity</button>
-                        <button name="Antibody_Diversity" class="tablinks">Antibody Diversity</button>
-                        <button name="Both_Diversity" class="tablinks">HIV+Antibody Diversity</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Diversity')" id="defaultOpen">HIV Diversity</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Diversity')">Antibody Diversity</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'Both_Diversity')">HIV+Antibody Diversity</button>
                     </div>
 
                     <div id="HIV_Diversity" class="tabcontent">
                         <br>
                         <h3>HIV Diversity</h3>
-                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample
-                        </p>
+                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample</p>
                         <div class="bubbleplot" data-num1="0">
                             Patient: <select class="patientdata1"></select>
+                            <div id="plotdiv1"></div>
                         </div>
-                        <div class="HIV_Diversity" id="HIV_Diversitydiv"></div>
                     </div>
 
                     <div id="Antibody_Diversity" class="tabcontent">
@@ -153,27 +157,26 @@
                         </p>
                         <div class="bubbleplot" data-num2="0">
                             Patient: <select class="patientdata2"></select>
+                            <div id="plotdiv2"></div>
                         </div>
-                        <div class="plotdiv" id="Antibody_Diversitydiv"></div>
                     </div>
 
                     <div id="Both_Diversity" class="tabcontent">
                         <br>
                         <h3>HIV + Antibody Diversity</h3>
-                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample
-                        </p>
+                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample</p>
                         <div class="bubbleplot" data-num3="0">
                             Patient: <select class="patientdata3"></select>
+                            <div id="plotdiv3"></div>
                         </div>
-                        <div class="plotdiv" id="Both_Diversitydiv"></div>
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="Divergence" role="tabpanel" aria-labelledby="divergence-tab">
+                <div class="tab-pane fade" id="Divergence" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="tab">
-                        <button name="HIV_Non_Syn" class="tablinks" id="defaultOpen">HIV Non-Synonymous</button>
-                        <button name="HIV_Syn" class="tablinks">HIV Synonymous </button>
-                        <button name="Antibody_Divergence" class="tablinks">Antibody Divergence</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Non_Syn')" id="defaultOpen">HIV Non-Synonymous</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Syn')">HIV Synonymous </button>
+                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Divergence')">Antibody</button>
                     </div>
 
                     <div id="HIV_Non_Syn" class="tabcontent">
@@ -181,10 +184,7 @@
                         <h3>HIV Non-Synonymous Divergence </h3>
                         <p>Measures the amount of coding mutations in the sequences of a sample when compared to some reference sequence. Specifically, this is the rate of non-synonymous mutations (often referred to as dN), relative to the most numerous
                             sequence of the first time-point. This is averaged across all sequences in a sample.</p>
-                        <div class="bubbleplot" data-num4="0">
-                            Patient: <select class="patientdata4"></select>
-                        </div>
-                        <div class="plotdiv" id="HIV_Non_Syndiv"></div>
+
                     </div>
 
                     <div id="HIV_Syn" class="tabcontent">
@@ -192,118 +192,120 @@
                         <h3>HIV Synonymous Divergence </h3>
                         <p>Measures the amount of silent mutations in the sequences of a sample when compared to some reference sequence. Specifically, this is the rate of synonymous mutations (often referred to as dS), relative to the most numerous sequence
                             of the first time-point. This is averaged across all sequences in a sample.</p>
-                        <div class="bubbleplot" data-num5="0">
-                            Patient: <select class="patientdata5"></select>
-                        </div>
-                        <div class="plotdiv" id="HIV_Syndiv"></div>
+
                     </div>
 
                     <div id="Antibody_Divergence" class="tabcontent">
                         <br>
-                        <h3>Antibody Divergence </h3>
+                        <h3>HIV Non-Synonymous Divergence </h3>
                         <p>The proportion of mutations in a sequence, relative to its inferred naïve ancestor sequence. The naïve ancestor sequence isinferred using <a href="https://changeo.readthedocs.io/en/version-0.4.5/">Change-O.</a> This is averaged
                             across all sequences in a sample.</p>
-                        <div class="bubbleplot" data-num6="0">
-                            Patient: <select class="patientdata6"></select>
-                        </div>
-                        <div class="plot" id="Antibody_Divergencediv"></div>
+
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="Selection" role="tabpanel" aria-labelledby="selection-tab">
+
+                <div class="tab-pane fade" id="Selection" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="tab">
-                        <button name="HIV_Selection" class="tablinks" id="defaultOpen">HIV Selection</button>
-                        <button name="selectionABCDR" class="tablinks">Antibody Selection</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Selection')" id="defaultOpen">HIV Selection</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Selection')">Antibody Selection</button>
                     </div>
 
                     <div id="HIV_Selection" class="tabcontent">
                         <br>
                         <h3>HIV Selection </h3>
                         <p> A measure of the amount of mutations that help a given sequence (or virion) generate offspring. Estimated as the non-synonymous mutation rate normalized by the synonymous mutation rate (or dN/dS). Values less than 1 indicate purifying
-                            selection, and values greater than 1 indicate positive selection. This is averaged across all sequences in a sample.
-                        </p>
-                        <div class="bubbleplot" data-num7="0">
-                            <div class="dropdown-plot">
-                                Patient: <select class="patientdata7"></select>
-                            </div>
-                            <div class="plotdiv" id="HIV_Selectiondiv"></div>
-                        </div>
+                            selection, and values greater than 1 indicate positive selection. This is averaged across all sequences in a sample.</p>
                     </div>
 
-                    <div id="selectionABCDR" class="tabcontent">
+                    <div id="Antibody_Selection" class="tabcontent">
                         <br>
                         <h3>Antibody Repertoire Selection </h3>
                         <p>A measure of the amount of mutations that help a given sequence (or B cell) generate offspring. Estimated using
                             <a href="http://selection.med.yale.edu/baseline/">BASELINe</a>. This compares the number of observed mutations in a sequence to the number of mutations that would be expected if there were no selection (i.e. neutrality). Values
-                            less than 0 indicate purifying selection, and values greater than 0 indicate positive selection.
-                        </p>
-                        <div class="bubbleplot" data-num8="0">
-                            Patient: <select class="patientdata8"></select>
-                        </div>
-                        <div class="plotdiv" id="selectionABCDRdiv"></div>
+                            less than 0 indicate purifying selection, and values greater than 0 indicate positive selection.</p>
+
+                    </div>
+
+                    <div id="Antibody_Divergence " class="tabcontent ">
+                        <br>
+                        <h3>HIV Non-Synonymous Divergence </h3>
+                        <p>The proportion of mutations in a sequence, relative to its inferred naïve ancestor sequence. The naïve ancestor sequence isinferred using <a href="https://changeo.readthedocs.io/en/version-0.4.5/ ">Change-O.</a> This is averaged
+                            across all sequences in a sample.</p>
+
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="Abundance" role="tabpanel" aria-labelledby="abundance-tab">
+                <div class="tab-pane fade" id="Abundance" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="tab">
-                        <button name="CD4_Count" class="tablinks" id="defaultOpen">CD4 T cell count</button>
-                        <button name="Viral_Load" class="tablinks">Viral Load</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'CD4count')" id="defaultOpen">CD4 T cell count</button>
+                        <button class="tablinks" onclick="openStatistic(event, 'viral_load')">Viral Load</button>
                     </div>
 
-                    <div id="CD4_Count" class="tabcontent">
+                    <div id="CD4count" class="tabcontent">
                         <br>
                         <h3>CD4 T cell count</h3>
                         <p>Measures the concentration of HIV virions in the peripheral blood of a sample.
                         </p>
                         <div class="bubbleplot" data-num9="0">
                             Patient: <select class="patientdata9"></select>
+                            <div id="plotdiv9"></div>
                         </div>
-                        <div class="plotdiv" id="CD4_Countdiv"></div>
                     </div>
 
-                    <div id="Viral_Load" class="tabcontent">
+                    <div id="viral_load" class="tabcontent">
                         <br>
                         <h3>Viral Load</h3>
                         <p>Measures the number of CD4 positive T cells in the peripheral blood of a sample.</p>
                         <div class="bubbleplot" data-num10="0">
                             Patient: <select class="patientdata10"></select>
+                            <div id="plotdiv10"></div>
                         </div>
-                        <div class="plotdiv " id="Viral_Loaddiv"></div>
                     </div>
                 </div>
-            </div>
 
 
+                <!-- jQuery CDN - Slim version (=without AJAX) -->
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+                <!-- Popper.JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
+                <!-- Bootstrap JS -->
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
 
-            <!-- jQuery CDN - Slim version (=without AJAX) -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
-            <!-- Popper.JS -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
-            <!-- Bootstrap JS -->
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
-
-            <script type="text/javascript ">
-                $(document).ready(function() {
-                    $('#sidebarCollapse').on('click', function() {
-                        $('#sidebar').toggleClass('active');
-                        $(this).toggleClass('active');
+                <script type="text/javascript ">
+                    $(document).ready(function() {
+                        $('#sidebarCollapse').on('click', function() {
+                            $('#sidebar').toggleClass('active');
+                            $(this).toggleClass('active');
+                        });
                     });
-                });
-            </script>
+                </script>
 
-            <!-- JS for Statistic description -->
-            <script>
-            </script>
+                <!-- JS for Statistic description -->
+                <script>
+                    function openStatistic(evt, statName) {
+                        var i, tabcontent, tablinks;
+                        tabcontent = document.getElementsByClassName("tabcontent ");
+                        for (i = 0; i < tabcontent.length; i++) {
+                            tabcontent[i].style.display = "none ";
+                        }
+                        tablinks = document.getElementsByClassName("tablinks ");
+                        for (i = 0; i < tablinks.length; i++) {
+                            tablinks[i].className = tablinks[i].className.replace(" active ", " ");
+                        }
+                        document.getElementById(statName).style.display = "block ";
+                        evt.currentTarget.className += " active ";
+                    }
+                </script>
 
-            <script>
-                // Get the element with id="defaultOpen " and click on it
-                document.getElementById("defaultOpen").click();
-            </script>
-
-            <script src="../js/diversity.js "></script>
+                <script>
+                    // Get the element with id="defaultOpen" and click on it
+                    document.getElementById("defaultOpen").click();
+                </script>
 
 
-
+                <script src="js/diversity.js"></script>
+                <script src="js/abundance.js"></script>
 </body>
 
 </html>
