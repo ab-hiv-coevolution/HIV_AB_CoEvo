@@ -26,7 +26,6 @@
 
     <!--Plotly.js-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
 </head>
 
 <!-- OP EDIT -->
@@ -60,8 +59,14 @@
                         <li>
                             <a href="#">Methods</a>
                         </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ab
+                        Diversity</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="data_table.html">Data</a>
+                            <a href="#">Patient 1</a>
                         </li>
                     </ul>
                 </li>
@@ -116,37 +121,41 @@
             <!-- Inserting tabs (Diversity, Divergence, Selection ) -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" class=active>
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Diversity" role="tab" aria-controls="Diversity" aria-selected="true" id="defaultOpen"> Diversity <span class="caret"></span></a>
+                    <a class="nav-link active" id="diversity-tab" data-toggle="tab" href="#Diversity" role="tab" aria-controls="Diversity" aria-selected="true" id="defaultOpen"> Diversity <span class="caret"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Divergence" role="tab" aria-controls="Divergence" aria-selected="false"> Divergence <span class="caret"></span></a>
+                    <a class="nav-link" id="divergence-tab" data-toggle="tab" href="#Divergence" role="tab" aria-controls="Divergence" aria-selected="false"> Divergence <span class="caret"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Selection" role="tab" aria-controls="Selection" aria-selected="false"> Selection <span class="caret"></span></a>
+                    <a class="nav-link" id="selection-tab" data-toggle="tab" href="#Selection" role="tab" aria-controls="Selection" aria-selected="false"> Selection <span class="caret"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="abundance-tab" data-toggle="tab" href="#Abundance" role="tab" aria-controls="Abundance" aria-selected="false"> Abundance <span class="caret"></span></a>
                 </li>
             </ul>
 
 
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="Diversity" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active" id="Diversity" role="tabpanel" aria-labelledby="diversity-tab">
                     <div class="tab">
-                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Diversity')" id="defaultOpen">HIV Diversity</button>
-                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Diversity')">Antibody Diversity</button>
-                        <button class="tablinks" onclick="openStatistic(event, 'Both_Diversity')">HIV+Antibody Diversity</button>
+                        <button name="HIV_Diversity" class="tablinks">HIV Diversity</button>
+                        <button name="Antibody_Diversity" class="tablinks">Antibody Diversity</button>
+                        <button name="Both_Diversity" class="tablinks">HIV+Antibody Diversity</button>
                     </div>
 
                     <div id="HIV_Diversity" class="tabcontent">
                         <br>
                         <h3>HIV Diversity</h3>
-                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample</p>
-                        <div class="showcase__section" id="bubble">
+                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample
+                        </p>
+                        <div class="showcase__section">
                             <div class="spacer --small"></div>
-                            <div id="bubbleplots">
-                                <div class="bubbleplot" data-num="0">
+                            <div>
+                                <div class="bubbleplot" data-num1="0">
                                     <div class="dropdown-plot">
-                                        Patient: <select class="patientdata"></select>
+                                        Patient: <select class="patientdata1"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv"></div>
+                                    <div class="HIV_Diversity" id="HIV_Diversitydiv"></div>
                                 </div>
                             </div>
                         </div>
@@ -158,22 +167,43 @@
                         <p>Antibody Repertoire Diversity – Same as HIV Diversity. Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences
                             in a sample
                         </p>
-
+                        <div class="showcase__section">
+                            <div class="spacer --small"></div>
+                            <div>
+                                <div class="bubbleplot" data-num2="0">
+                                    <div class="dropdown-plot">
+                                        Patient: <select class="patientdata2"></select>
+                                    </div>
+                                    <div class="plotdiv" id="Antibody_Diversitydiv"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="Both_Diversity" class="tabcontent">
                         <br>
                         <h3>HIV + Antibody Diversity</h3>
-                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample</p>
-
+                        <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample
+                        </p>
+                        <div class="showcase__section">
+                            <div class="spacer --small"></div>
+                            <div>
+                                <div class="bubbleplot" data-num3="0">
+                                    <div class="dropdown-plot">
+                                        Patient: <select class="patientdata3"></select>
+                                    </div>
+                                    <div class="plotdiv" id="Both_Diversitydiv"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="Divergence" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="tab-pane fade" id="Divergence" role="tabpanel" aria-labelledby="divergence-tab">
                     <div class="tab">
-                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Non_Syn')" id="defaultOpen">HIV Non-Synonymous</button>
-                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Syn')">HIV Synonymous </button>
-                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Divergence')">Antibody</button>
+                        <button name="HIV_Non_Syn" class="tablinks" id="defaultOpen">HIV Non-Synonymous</button>
+                        <button name="HIV_Syn" class="tablinks">HIV Synonymous </button>
+                        <button class="tablinks">Antibody</button>
                     </div>
 
                     <div id="HIV_Non_Syn" class="tabcontent">
@@ -181,14 +211,14 @@
                         <h3>HIV Non-Synonymous Divergence </h3>
                         <p>Measures the amount of coding mutations in the sequences of a sample when compared to some reference sequence. Specifically, this is the rate of non-synonymous mutations (often referred to as dN), relative to the most numerous
                             sequence of the first time-point. This is averaged across all sequences in a sample.</p>
-                        <div class="showcase__section" id="bubble">
+                        <div class="showcase__section">
                             <div class="spacer --small"></div>
-                            <div id="bubbleplots">
-                                <div class="bubbleplot" data-num="0">
+                            <div>
+                                <div class="bubbleplot" data-num4="0">
                                     <div class="dropdown-plot">
-                                        Patient: <select class="patientdata"></select>
+                                        Patient: <select class="patientdata4"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_4"></div>
+                                    <div class="plotdiv" id="HIV_Non_Syndiv"></div>
                                 </div>
                             </div>
                         </div>
@@ -199,14 +229,14 @@
                         <h3>HIV Synonymous Divergence </h3>
                         <p>Measures the amount of silent mutations in the sequences of a sample when compared to some reference sequence. Specifically, this is the rate of synonymous mutations (often referred to as dS), relative to the most numerous sequence
                             of the first time-point. This is averaged across all sequences in a sample.</p>
-                        <div class="showcase__section" id="bubble">
+                        <div class="showcase__section">
                             <div class="spacer --small"></div>
                             <div id="bubbleplots">
-                                <div class="bubbleplot" data-num="0">
+                                <div class="bubbleplot" data-num5="0">
                                     <div class="dropdown-plot">
-                                        Patient: <select class="patientdata"></select>
+                                        Patient: <select class="patientdata5"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_5"></div>
+                                    <div class="plotdiv" id="HIV_Syndiv"></div>
                                 </div>
                             </div>
                         </div>
@@ -214,28 +244,27 @@
 
                     <div id="Antibody_Divergence" class="tabcontent">
                         <br>
-                        <h3>HIV Non-Synonymous Divergence </h3>
+                        <h3>Antibody Divergence </h3>
                         <p>The proportion of mutations in a sequence, relative to its inferred naïve ancestor sequence. The naïve ancestor sequence isinferred using <a href="https://changeo.readthedocs.io/en/version-0.4.5/">Change-O.</a> This is averaged
                             across all sequences in a sample.</p>
                         <div class="showcase__section" id="bubble">
                             <div class="spacer --small"></div>
                             <div id="bubbleplots">
-                                <div class="bubbleplot" data-num="0">
+                                <div class="bubbleplot" data-num6="0">
                                     <div class="dropdown-plot">
-                                        Patient: <select class="patientdata"></select>
+                                        Patient: <select class="patientdata6"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_6"></div>
+                                    <div class="plot" id="divergenceAntibodydiv"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div class="tab-pane fade" id="Selection" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="tab-pane fade" id="Selection" role="tabpanel" aria-labelledby="selection-tab">
                     <div class="tab">
-                        <button class="tablinks" onclick="openStatistic(event, 'HIV_Selection')" id="defaultOpen">HIV Selection</button>
-                        <button class="tablinks" onclick="openStatistic(event, 'Antibody_Selection')">Antibody Selection</button>
+                        <button class="tablinks" id="defaultOpen">HIV Selection</button>
+                        <button class="tablinks">Antibody Selection</button>
                     </div>
 
                     <div id="HIV_Selection" class="tabcontent">
@@ -243,59 +272,83 @@
                         <h3>HIV Selection </h3>
                         <p> A measure of the amount of mutations that help a given sequence (or virion) generate offspring. Estimated as the non-synonymous mutation rate normalized by the synonymous mutation rate (or dN/dS). Values less than 1 indicate purifying
                             selection, and values greater than 1 indicate positive selection. This is averaged across all sequences in a sample.</p>
-                        <div class="showcase__section" id="bubble">
+                        <div class="showcase__section">
                             <div class="spacer --small"></div>
-                            <div id="bubbleplots">
-                                <div class="bubbleplot" data-num="0">
+                            <div>
+                                <div class="bubbleplot" data-num7="0">
                                     <div class="dropdown-plot">
-                                        Patient: <select class="patientdata"></select>
+                                        Patient: <select class="patientdata7"></select>
                                     </div>
-                                    <div class="plot" id="plotdiv_7"></div>
+                                    <div class="plotdiv" id="selectionHIVdiv"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div id="Antibody_Selection" class="tabcontent">
+                    <div id="selectionABCDR" class="tabcontent">
                         <br>
                         <h3>Antibody Repertoire Selection </h3>
                         <p>A measure of the amount of mutations that help a given sequence (or B cell) generate offspring. Estimated using
                             <a href="http://selection.med.yale.edu/baseline/">BASELINe</a>. This compares the number of observed mutations in a sequence to the number of mutations that would be expected if there were no selection (i.e. neutrality). Values
-                            less than 0 indicate purifying selection, and values greater than 0 indicate positive selection.</p>
-                        <div class=" showcase__section " id="bubble ">
+                            less than 0 indicate purifying selection, and values greater than 0 indicate positive selection.
+                        </p>
+                        <div class=" showcase__section ">
                             <div class="spacer --small "></div>
-                            <div id="bubbleplots ">
-                                <div class="bubbleplot " data-num="0 ">
+                            <div>
+                                <div class="bubbleplot " data-num8="0 ">
                                     <div class="dropdown-plot ">
-                                        Patient: <select class="patientdata "></select>
+                                        Patient: <select class="patientdata8"></select>
                                     </div>
-                                    <div class="plot " id="plotdiv_8"></div>
+                                    <div class="plotdiv" id="selectionABCDRdiv"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div id="Antibody_Divergence " class="tabcontent ">
-                        <br>
-                        <h3>HIV Non-Synonymous Divergence </h3>
-                        <p>The proportion of mutations in a sequence, relative to its inferred naïve ancestor sequence. The naïve ancestor sequence isinferred using <a href="https://changeo.readthedocs.io/en/version-0.4.5/ ">Change-O.</a> This is averaged
-                            across all sequences in a sample.</p>
-                        <div class="showcase__section " id="bubble ">
-                            <div class="spacer --small "></div>
-                            <div id="bubbleplots ">
-                                <div class="bubbleplot " data-num="0 ">
-                                    <div class="dropdown-plot ">
-                                        Patient: <select class="patientdata "></select>
-                                    </div>
-                                    <div class="plot " id="plotdiv_9"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
+                <div class="tab-pane fade" id="Abundance" role="tabpanel" aria-labelledby="abundance-tab">
+                    <div class="tab">
+                        <button class="tablinks" id="defaultOpen">CD4 T cell count</button>
+                        <button class="tablinks">Viral Load</button>
+                    </div>
+
+                    <div id="CD4_count" class="tabcontent">
+                        <br>
+                        <h3>CD4 T cell count</h3>
+                        <p>Measures the concentration of HIV virions in the peripheral blood of a sample.
+                        </p>
+                        <div class=" showcase__section ">
+                            <div class="spacer --small "></div>
+                            <div>
+                                <div class="bubbleplot " data-num9="0 ">
+                                    <div class="dropdown-plot ">
+                                        Patient: <select class="patientdata9"></select>
+                                    </div>
+                                    <div class="plotdiv" id="CD4_Countdiv"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Viral_Load" class="tabcontent">
+                        <br>
+                        <h3>Viral Load</h3>
+                        <p>Measures the number of CD4 positive T cells in the peripheral blood of a sample.</p>
+                        <div class=" showcase__section ">
+                            <div class="spacer --small "></div>
+                            <div>
+                                <div class="bubbleplot " data-num10="0 ">
+                                    <div class="dropdown-plot ">
+                                        Patient: <select class="patientdata10"></select>
+                                    </div>
+                                    <div class="plotdiv" id="Viral_Loaddiv"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
 
             <!-- jQuery CDN - Slim version (=without AJAX) -->
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
@@ -315,19 +368,6 @@
 
             <!-- JS for Statistic description -->
             <script>
-                function openStatistic(evt, statName) {
-                    var i, tabcontent, tablinks;
-                    tabcontent = document.getElementsByClassName("tabcontent ");
-                    for (i = 0; i < tabcontent.length; i++) {
-                        tabcontent[i].style.display = "none ";
-                    }
-                    tablinks = document.getElementsByClassName("tablinks ");
-                    for (i = 0; i < tablinks.length; i++) {
-                        tablinks[i].className = tablinks[i].className.replace(" active ", " ");
-                    }
-                    document.getElementById(statName).style.display = "block ";
-                    evt.currentTarget.className += " active ";
-                }
             </script>
 
             <script>
