@@ -385,3 +385,13 @@ th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+
+/* ---------------------------------------------------
+    Tabs within tabs
+----------------------------------------------------- */
+
+.fix {
+    background: green;
+    background: rgba(0, 255, 0, 0.3);
+}

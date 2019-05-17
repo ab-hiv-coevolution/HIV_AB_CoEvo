@@ -24,11 +24,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+
+
     <!--Plotly.js-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
+
     <script src="../js/CURRENT_combined_logic.js"></script>
+
+
+
 
 </head>
 
@@ -185,7 +191,7 @@
                     <div class="tab">
                         <button name="HIV_Non_Syn" class="tablinks" id="defaultOpen">HIV Non-Synonymous</button>
                         <button name="HIV_Syn" class="tablinks">HIV Synonymous </button>
-                        <button class="tablinks">Antibody</button>
+                        <button name="Antibody_Divergence" class="tablinks">Antibody</button>
                     </div>
 
                     <div id="HIV_Non_Syn" class="tabcontent">
@@ -225,8 +231,8 @@
 
                 <div class="tab-pane fade" id="Selection" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="tab">
-                        <button class="tablinks" id="defaultOpen">HIV Selection</button>
-                        <button class="tablinks">Antibody Selection</button>
+                        <button name="HIV_Selection" class="tablinks" id="defaultOpen">HIV Selection</button>
+                        <button name="Antibody_Selection" class="tablinks">Antibody Selection</button>
 
                     </div>
 
@@ -257,8 +263,8 @@
 
                 <div class="tab-pane fade" id="Abundance" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="tab">
-                        <button class="tablinks" id="defaultOpen">CD4 T cell count</button>
-                        <button class="tablinks">Viral Load</button>
+                        <button name="CD4count" class="tablinks" id="defaultOpen">CD4 T cell count</button>
+                        <button name="viral_load" class="tablinks">Viral Load</button>
                     </div>
 
                     <div id="CD4count" class="tabcontent">

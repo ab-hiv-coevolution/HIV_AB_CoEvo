@@ -18,6 +18,8 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
             allselectionABCDR = unpack(rows, 'abr_baseline_mean_sigma_CDR'),
             allselectionABFWR = unpack(rows, 'abr_baseline_mean_sigma_FWR'),
             allselectionHIV = unpack(rows, 'hiv_selection_dN_dS'),
+            allabundanceCD4 = unpack(rows, 'CD4_count'),
+            allabundanceViral_Load = unpack(rows, 'viral_load'),
             currentPatient,
             holdDat,
             holdPat,
@@ -82,7 +84,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                             break;
                         case "Both_Diversity":
                             break;
-                        case "divergenceAntibody":
+                        case "Antibody_Divergence":
                             currentData.push(alldivergenceAntibody[i]);
                             break;
                         case "HIV_Non_Syn":
@@ -97,10 +99,15 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
                         case "selectionABFWR":
                             currentData.push(allselectionABFWR[i]);
                             break;
-                        case "selectionHIV":
+                        case "HIV_Selection":
                             currentData.push(allselectionHIV[i]);
                             break;
-
+                        case "CD4count":
+                            currentData.push(allabundanceCD4[i]);
+                            break;
+                        case "viral_load":
+                            currentData.push(allabundanceViral_Load[i]);
+                            break;
                     }
                     trace1 = {
                         x: currentTimePoint,
@@ -122,7 +129,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         };
 
 
-        setBubblePlot("1", "HIV_Diversity");
+        //setBubblePlot("1", "HIV_Diversity");
 
         function setBubblePlot(chosenPatient, chosenData) {
             console.log(chosenData);
@@ -163,18 +170,18 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
         function openStatistic(evt) {
             var i, tabcontent, tablinks, statName, dataVal;
-            tabcontent = document.getElementsByClassName("tabcontent ");
+            tabcontent = document.getElementsByClassName("tabcontent");
             //console.log(tabcontent);
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none ";
+                tabcontent[i].style.display = "none";
             }
-            tablinks = document.getElementsByClassName("tablinks ");
+            tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active ", " ");
+                tablinks[i].className = tablinks[i].className.replace("active", " ");
             }
             statName = evt.currentTarget.name;
-            document.getElementById(statName).style.display = "block ";
-            evt.currentTarget.className += " active ";
+            document.getElementById(statName).style.display = "block";
+            evt.currentTarget.className += "active";
             //graphData = document.getElementById(statName);
             //console.log(statName);
             setBubblePlot(holdPat, statName)
@@ -252,14 +259,11 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
         }
 
         function updatePatient() {
-            setBubblePlot(patientSelector.value, holdDat);
+            setBubblePlot(patientSelector1.value, holdDat);
             //console.log(holdDat);
         }
 
-        patientSelector.addEventListener('change', updatePatient, false);
-
-
-
+        patientSelector1.addEventListener('change', updatePatient, false);
 
 
         //JS for Statistic description
@@ -271,17 +275,17 @@ Plotly.d3.csv("https://raw.githubusercontent.com/phamoh/HIV_AB_CoEvo/phamoh-patc
 
         function openStatistic(evt) {
             var i, tabcontent, tablinks, statName, dataVal;
-            tabcontent = document.getElementsByClassName("tabcontent ");
+            tabcontent = document.getElementsByClassName("tabcontent");
             //console.log(tabcontent);
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none ";
             }
-            tablinks = document.getElementsByClassName("tablinks ");
+            tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active ", " ");
             }
             statName = evt.currentTarget.name;
-            document.getElementById(statName).style.display = "block ";
+            document.getElementById(statName).style.display = "block";
             evt.currentTarget.className += " active ";
             //graphData = document.getElementById(statName);
             //console.log(statName);
