@@ -47,6 +47,10 @@ a:focus {
     margin: 40px 0;
 }
 
+.nav-link {
+    padding: 15px 25px 10px 25px;
+}
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -342,7 +346,7 @@ h2 {
 /* Change background color of buttons on hover */
 
 .tab button:hover {
-    background-color: #C2D3DA;
+    background-color: #33ccff;
 }
 
 
@@ -360,6 +364,17 @@ h2 {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+.tablinks {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    border-radius: 15px;
 }
 
 
@@ -391,7 +406,18 @@ tr:nth-child(even) {
     Tabs within tabs
 ----------------------------------------------------- */
 
-.fix {
-    background: green;
-    background: rgba(0, 255, 0, 0.3);
+.bordered-tab-contents>.tab-content>.tab-pane {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px 5px 5px;
+    padding: 10px;
+}
+
+.bordered-tab-contents>.nav-link {
+    margin-bottom: 0;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px 0px 5px 5px;
 }

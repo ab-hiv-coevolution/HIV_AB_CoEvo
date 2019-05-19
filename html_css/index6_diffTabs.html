@@ -10,8 +10,9 @@
     <title>HIV/Ab</title>
     <link rel="icon" type="image/png" href="../logos/favicon.png" sizes="32x32">
 
-    <!-- Bootstrap CSS CDN -->
+    <!-- Bootstrap CSS CDN  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style5.css">
 
@@ -19,26 +20,16 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-    <!-- Data tabs (Diversty, Divergence, and Selection) 
+    <!-- Data tabs (Diversty, Divergence, and Selection) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    -->
 
 
     <!--Plotly.js-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-    <!-- Data tabs within tabs -->
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <script data-require="jquery@2.1.1" data-semver="2.1.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script data-require="jquery-ui@1.10.4" data-semver="1.10.4" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <script src="../js/tabs.js"></script>
-
-
-    <script src="../js/CURRENT_combined_logic.js"></script>
+    <script src="../js/diversity.js"></script>
 
 
 
@@ -101,10 +92,8 @@
 
         <!-- Page Content Holder -->
         <div id="content">
-
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-
                     <button type="button" id="sidebarCollapse" class="navbar-btn">
                         <span></span>
                         <span></span>
@@ -134,75 +123,198 @@
             </div>
 
             <hr>
-
             <h3>Explore the HIV and the Antibody Repertoire</h3>
+            <br>
 
             <!-- Inserting tabs (Diversity, Divergence, Selection ) -->
-
-            <div class="tabs fix">
-                <ul>
-                    <li>
-                        <a href="#tabs-1">Tab 1</a>
-                    </li>
-                    <li>
-                        <a href="#tabs-2">Tab 2</a>
-                    </li>
-                    <li>
-                        <a href="#tabs-3">Tab 3</a>
-                    </li>
+            <div class="bordered-tab-contents">
+                <ul class="nav nav-tabs" id="statsTab">
+                    <!--top level tabs-->
+                    <li class="active"><a href="#Diversity" class="navbar-brand" data-toggle="tab">Diversity<span class="caret"></span></a></li>
+                    <li><a href="#Divergence" class="navbar-brand" data-toggle="tab">Divergence<span class="caret"></span></a></li>
+                    <li><a href="#Selection" class="navbar-brand" data-toggle="tab">Selection<span class="caret"></span></a></li>
+                    <li><a href="#Abundance" class="navbar-brand" data-toggle="tab">Abundance<span class="caret"></span></a></li>
                 </ul>
-                <div class="tabContainer">
-                    <div id="tabs-1" class="tabContent">
-                        <p>Some content 1.</p>
-                    </div>
-                    <div id="tabs-2" class="tabContent">
-                        <div class="subtabs">
-                            <ul>
-                                <li><a href="#subtab1">Subtab1</a></li>
-                                <li><a href="#subtab2">Subtab2</a></li>
-                            </ul>
-                            <div id="subtab1" class="subtabContent">
-                                Some sub content1
+
+                <div class="tab-content" id="myTabContent">
+                    <!--diversity tab menu-->
+                    <div class="tab-pane fade in active" id="Diversity">
+                        <ul class="nav" style="background-color:#f5f5f5; border:1px solid #dddddd;" id="diversity_tabs">
+                            <a href="#HIV_Diversity" class="nav-link" data-toggle="tab">HIV Diversity</a>
+                            <a href="#Antibody_Diversity" class="nav-link" data-toggle="tab">Antibody Diversity</a>
+                            <a href="#Both_Diversity" class="nav-link" data-toggle="tab">HIV+Antibody Diversity</a>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="HIV_Diversity">
+                                <br>
+                                <h3>HIV Diversity</h3>
+                                <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample</p>
+                                <div class="bubbleplot" data-num1="0">
+                                    Patient: <select class="patientdata1"></select>
+                                    <div id="plotdiv1"></div>
+                                </div>
                             </div>
-                            <div id="subtab2" class="subtabContent">
-                                Some sub content2
+                            <div class="tab-pane fade" id="Antibody_Diversity">
+                                <br>
+                                <h3>Antibody Repertoire Diversity</h3>
+                                <p>Antibody Repertoire Diversity – Same as HIV Diversity. Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of
+                                    sequences in a sample
+                                </p>
+                                <div class="bubbleplot" data-num2="0">
+                                    Patient: <select class="patientdata2"></select>
+                                    <div id="plotdiv2"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Both_Diversity">
+                                <br>
+                                <h3>HIV + Antibody Diversity</h3>
+                                <p>Measured as π. This is a measure of the amount of differences between the sequences in a sample. Specifically, this is the mean genetic distance between all pairs of sequences in a sample</p>
+                                <div class="bubbleplot" data-num3="0">
+                                    Patient: <select class="patientdata3"></select>
+                                    <div id="plotdiv3"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div id="tabs-3" class="tabContent">
-                        <p>Some content 3</p>
+
+                    <!--divergence tab menu-->
+                    <div class="tab-pane fade" id="Divergence">
+                        <ul class="nav" style="background-color:#f5f5f5; border:1px solid #dddddd;" id="divergence_tabs">
+                            <a href="#HIV_Non_Syn" class="nav-link" data-toggle="tab">HIV Non-Synonymous</a>
+                            <a href="#HIV_Syn" class="nav-link" data-toggle="tab">HIV Synonymous</a>
+                            <a href="#Antibody_Divergence" class="nav-link" data-toggle="tab">Antibody</a>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="HIV_Non_Syn">
+                                <br>
+                                <h3>HIV Non-Synonymous Divergence </h3>
+                                <p>Measures the amount of coding mutations in the sequences of a sample when compared to some reference sequence. Specifically, this is the rate of non-synonymous mutations (often referred to as dN), relative to the most numerous
+                                    sequence of the first time-point. This is averaged across all sequences in a sample.
+                                </p>
+                                <div class="bubbleplot" data-num4="0">
+                                    Patient: <select class="patientdata4"></select>
+                                    <div id="plotdiv4 "></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="HIV_Syn">
+                                <br>
+                                <h3>HIV Synonymous Divergence </h3>
+                                <p>Measures the amount of silent mutations in the sequences of a sample when compared to some reference sequence. Specifically, this is the rate of synonymous mutations (often referred to as dS), relative to the most numerous
+                                    sequence of the first time-point. This is averaged across all sequences in a sample.
+                                </p>
+                                <div class="bubbleplot" data-num5="0">
+                                    Patient: <select class="patientdata5"></select>
+                                    <div id="plotdiv5"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Antibody_Divergence">
+                                <br>
+                                <h3>Antibody Repertoire Divergence</h3>
+                                <p>The proportion of mutations in a sequence, relative to its inferred naïve ancestor sequence. The naïve ancestor sequence isinferred using <a href="https://changeo.readthedocs.io/en/version-0.4.5/ ">Change-O.</a> This is
+                                    averaged across all sequences in a sample.</p>
+                                <div class="bubbleplot" data-num6="0">
+                                    Patient: <select class="patientdata6"></select>
+                                    <div id="plotdiv6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--selection tab menu-->
+                    <div class="tab-pane fade" id="Selection">
+                        <ul class="nav" style="background-color:#f5f5f5; border:1px solid #dddddd;" id="selection_tabs">
+                            <li class="active"><a href="#HIV_Selection" class="nav-link" data-toggle="tab">HIV Selection</a></li>
+                            <li><a href="#Antibody_Selection" class="nav-link" data-toggle="tab">Antibody Selection</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="HIV_Selection">
+                                <br>
+                                <h3>HIV Selection </h3>
+                                <p> A measure of the amount of mutations that help a given sequence (or virion) generate offspring. Estimated as the non-synonymous mutation rate normalized by the synonymous mutation rate (or dN/dS). Values less than 1 indicate
+                                    purifying selection, and values greater than 1 indicate positive selection. This is averaged across all sequences in a sample.
+                                </p>
+                                <div class="bubbleplot" data-num7="0">
+                                    Patient: <select class="patientdata7"></select>
+                                    <div id="plotdiv7"></div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="Antibody_Selection">
+                                <br>
+                                <h3>Antibody Repertoire Selection </h3>
+                                <p>A measure of the amount of mutations that help a given sequence (or B cell) generate offspring. Estimated using
+                                    <a href="http://selection.med.yale.edu/baseline/ ">BASELINe</a>. This compares the number of observed mutations in a sequence to the number of mutations that would be expected if there were no selection (i.e. neutrality).
+                                    Values less than 0 indicate purifying selection, and values greater than 0 indicate positive selection.</p>
+                                <div class="bubbleplot" data-num8="0">
+                                    Patient: <select class="patientdata8"></select>
+                                    <div id="plotdiv8"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--abundance tab menu-->
+                    <div class="tab-pane fade" id="Abundance">
+                        <ul class="nav" style="background-color:#f5f5f5; border:1px solid #dddddd;" id="abundance_tabs">
+                            <a href="#CD4count" class="nav-link" data-toggle="tab">CD4 T cell count</a>
+                            <a href="#viral_load" class="nav-link" data-toggle="tab">Viral Load</a>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="CD4count">
+                                <br>
+                                <h3>CD4 T cell count</h3>
+                                <p>Measures the concentration of HIV virions in the peripheral blood of a sample.
+                                </p>
+                                <div class="bubbleplot" data-num9="0">
+                                    Patient: <select class="patientdata9 "></select>
+                                    <div id="plotdiv9"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="viral_load">
+                                <br>
+                                <h3>Viral Load</h3>
+                                <p>Measures the number of CD4 positive T cells in the peripheral blood of a sample.</p>
+                                <div class="bubbleplot" data-num10="0">
+                                    Patient: <select class="patientdata10"></select>
+                                    <div id="plotdiv10"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <!-- jQuery CDN - Slim version (=without AJAX) -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
-            <!-- Popper.JS -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
-            <!-- Bootstrap JS -->
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
-
-            <script type="text/javascript ">
-                $(document).ready(function() {
-                    $('#sidebarCollapse').on('click', function() {
-                        $('#sidebar').toggleClass('active');
-                        $(this).toggleClass('active');
-                    });
-                });
-            </script>
-
-            <!-- JS for Statistic description -->
-            <script>
-            </script>
-
-            <script>
-                // Get the element with id="defaultOpen" and click on it
-                document.getElementById("defaultOpen").click();
-            </script>
+        </div>
+    </div>
 
 
 
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js " integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ " crossorigin="anonymous "></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js " integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm " crossorigin="anonymous "></script>
+
+    <script type="text/javascript ">
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript ">
+        $("ul.nav-tabs a ").click(function(e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    </script>
 
 </body>
 
